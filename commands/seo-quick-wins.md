@@ -8,6 +8,7 @@ You are running a SEO Quick-Wins audit for: **$ARGUMENTS**
 This is based on the knowledge base (Sections 17, 19, 24):
 - Quick wins live at Position 4-15 with high impressions
 - GSC "Avg Position" lies — country-split is the truth
+- A live SERP is one snapshot (rotation + personalization): use it for composition, not position (Section 13)
 - CTR optimization only makes sense at Position 1-5 (Section 24)
 - Republish candidates: Position 8-25 with KD<30 (Re-Eval Hack, Section 19)
 
@@ -42,7 +43,9 @@ Call `mcp__dataforseo__serp_organic_live_advanced` for the highest-priority keyw
 - language_code: "en"
 - depth: 20
 
-Analyze: Is there an AI Overview? Are competitors Reddit/Wikipedia/authority-sites? What organic position is the user's domain actually at right now?
+Analyze the **composition**: Is there an AI Overview? Are competitors Reddit/Wikipedia/authority-sites? Which SERP features show (video, PAA)?
+
+> **The snapshot is not position truth** (KB Section 13, "Rank readings are snapshots"). Google rotates results, in some SERPs hourly, and personalizes for logged-in users. Note where the domain shows up in this one reading, but if it disagrees with Step 2, the GSC 28-day country-split position wins. Never call a page "dropped" or "ranking" from a single live SERP.
 
 ### Step 5: Synthesize action recommendations
 For each quick-win, recommend ONE specific action:

@@ -1,5 +1,5 @@
 ---
-description: Vet a backlink / link-exchange / guest-post offer — does the linking page have real traffic, does the site fit your niche, or is it a link farm? Verdict + reply strategy. No Backlinks API needed.
+description: Vet a backlink / link-exchange / guest-post offer — does the linking page have real traffic, does the site fit your niche, or is it a link farm? Verdict + reply strategy, plus a keyword harvest from what their pages rank for. No Backlinks API needed.
 argument-hint: "<candidate domain or the exact page that would carry your link>"
 ---
 
@@ -22,7 +22,7 @@ Call `mcp__dataforseo__dataforseo_labs_google_domain_rank_overview` (target = re
 - **ETV under ~100/mo or zero top-10 rankings → the whole domain is barely alive; everything below it inherits that.**
 
 ### Step 3: What does it actually rank FOR?
-Call `mcp__dataforseo__dataforseo_labs_google_ranked_keywords` (target = domain, limit 20, ordered by search volume desc).
+Call `mcp__dataforseo__dataforseo_labs_google_ranked_keywords` (target = domain, limit 100, ordered by search volume desc). The top 20 answer the niche question below; the full list feeds the Step 7 keyword harvest.
 - Are the top keywords in or adjacent to YOUR niche — or random one-offs from guest posts (a dev-tools blog ranking mainly for "maui car rentals" is a guest-post farm, not a topical site)?
 - Niche fit test: would a user searching their top keywords plausibly also search yours? (Section 1, Topical Bridges)
 
@@ -40,10 +40,19 @@ WebFetch 1-2 of their regular articles. Real editorial content for readers, or c
 Output exactly one of:
 
 - **ACCEPT** — the specific linking page ranks/has traffic, niche fits, outbound profile clean. Proceed: in-content placement, descriptive partial-match anchor (not exact-money), mid-paragraph. Reciprocate only from a mid-tier article of yours WITH traffic (protect your top pages), and only AFTER their link is live and verified. Prefer a 3-way (A→B→C) if they run multiple sites.
+  - **Pick YOUR target page, and it's not the homepage** (Sections 1 + 17: authority is page-level). Call `mcp__gsc__advanced_search_analytics` (dimensions=["page","query"], days=90, row_limit=100) and choose the page at **Pos 4-20** whose topic matches their linking page's paragraph. Name that URL and the anchor in the verdict.
 - **COUNTER** — domain is real but the offered placement is worthless (new guest page, link section). Counter with: contextual in-content link inside an article of theirs that ALREADY ranks, on a topic adjacent to yours. Provide the exact counter-message text.
+  - **Partner variant** (KB Section 6.13): if they're a real, non-competing business serving your audience, propose partner work instead of a swap: a joint page on the topic you overlap on, named after a keyword *they* can win, which you help rank (keyword research, sharing). A link on a page that starts earning traffic outlasts and outweighs any swap. Include that offer in the counter text.
 - **DECLINE** — no traffic, no fit, or link-farm pattern. Decline politely, leave the door open ("if you ever have an in-content spot in a ranking article about <your niche>, happy to revisit"). Provide the decline text.
 
 Always include: the 2-3 data points that decided it (ETV, top keywords, the linking page's own rank/traffic) so the human can sanity-check the call.
+
+### Step 7: Keyword harvest (no extra call, runs for every verdict)
+Link sellers and link-heavy sites *must* keep their pages ranking, so their ranking pages carry titles and slugs that were already iterated until they worked (KB Section 5, "Free Keyword Research"). Mine the Step 3 data even on a DECLINE:
+- Keep keywords from the 100 that sit **in or adjacent to your niche** (same entities/terms as your product or your GSC footprint) where their page ranks **Pos ≤ 20**.
+- For each: keyword, their ranking URL (its slug and title are the pattern to learn from), their position, search volume, KD if returned.
+- Flag the ones you don't rank for yet as candidates for `/seo-cluster-expand` or `/seo-next-content`. Never copy their pages; take the keyword and the document-name pattern.
+- If fewer than 3 niche keywords survive, say so in one line. Don't pad the list with off-niche terms.
 
 ## Operating rules
 - **Never reveal your target URLs first** — share your domain and samples, but lock the exact pairing only after their side is verified.
@@ -51,4 +60,4 @@ Always include: the 2-3 data points that decided it (ETV, top keywords, the link
 - Be honest in the verdict: a polite decliner today can be a great partner in 6 months when their pages rank.
 
 ## Cost
-~$0.02–0.05 per vet (2-3 Labs calls; WebFetch is free). No Backlinks API subscription needed.
+~$0.02–0.05 per vet (2-3 Labs calls; WebFetch and GSC are free; the keyword harvest reuses Step 3 data). No Backlinks API subscription needed.

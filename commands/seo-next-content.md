@@ -82,7 +82,7 @@ For each of the final 3-5 recommendations, output a complete brief:
 **Volume**: X/mo  |  **KD**: Y  |  **Intent**: informational/commercial  |  **Funnel**: BoF/MoF/ToF
 
 ### What to publish
-- **URL Slug**: /blog/[slug] or /alternatives/[slug] or /[parent]/[slug]
+- **URL Slug**: /blog/[slug] or /alternatives/[slug] or /[parent]/[slug] (keyword core only: drop words Google already infers, e.g. `/trip-to-como`, not `/how-to-enjoy-a-day-at-lake-como-italy`; one keyword = one page on the domain, Section 5)
 - **Title Tag** (150-220 chars per Section 5): "Primary keyword - secondary intent variant - tertiary - Brand"
 - **H1**: [exact keyword phrasing for max query match]
 - **Meta Description**: [120-160 chars, but Google rewrites anyway — fine to skip per Section 8]

@@ -64,10 +64,12 @@ The commands call tools named `mcp__dataforseo__*`, so the server **must be regi
 ```
 
 Sign up at [dataforseo.com](https://dataforseo.com/) — it's prepaid credit, **no subscription needed**. The commands only use:
-- **DataForSEO Labs** (keyword difficulty, related keywords, keyword ideas, search intent, domain rank)
+- **DataForSEO Labs** (keyword difficulty, related keywords, keyword ideas, keyword suggestions, ranked keywords, search intent, domain rank)
 - **SERP API** (live Google results for validation)
 
-Real-world cost per command run: **$0 – $0.18** (each command lists its cost at the bottom; GSC calls are always free). You do **NOT** need the Backlinks API subscription (~$100+/mo) — nothing here uses it.
+Real-world cost per command run: **$0-0.24** (each command lists its cost at the bottom; GSC calls are always free). You do **NOT** need the Backlinks API subscription (~$100+/mo) — nothing here uses it.
+
+**Optional, no setup:** Bing Webmaster Tools' **AI Performance** report (grounding queries + citation share for Copilot/Bing AI). There's no MCP for it here; `/seo-llm-audit` asks for a spreadsheet export and folds it in when you have one.
 
 ## 4. The knowledge base
 

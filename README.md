@@ -53,7 +53,7 @@ docs/
 ## Quickstart
 
 1. **Install the commands** — copy `commands/*.md` to `~/.claude/commands/`
-2. **Connect the data** — two MCP servers, see [docs/setup.md](docs/setup.md) (GSC is free; DataForSEO is prepaid pay-per-call, each command run costs $0–0.18 — no subscription, and **no** Backlinks API needed)
+2. **Connect the data** — two MCP servers, see [docs/setup.md](docs/setup.md) (GSC is free; DataForSEO is prepaid pay-per-call, each command run costs $0-0.24 — no subscription, and **no** Backlinks API needed)
 3. **Run it** — `/seo-analyze yourdomain.com`
 
 Then follow the loop in [docs/workflow.md](docs/workflow.md): publish into proven authority, push what's almost there, republish what got stuck.
@@ -77,7 +77,7 @@ Battle-tested on my own bootstrapped projects, including [queryglow.com](https:/
 
 **Do I need Claude Code specifically?** The commands are written for it (slash commands + MCP). The knowledge base is plain markdown — useful with any agent or none.
 
-**What does it cost to run?** GSC API: free. DataForSEO: prepaid credit, $0.02–0.18 per command run (each command lists its cost). A month of weekly audits costs less than a coffee.
+**What does it cost to run?** GSC API: free. DataForSEO: prepaid credit, $0.02-0.24 per command run (each command lists its cost). A month of weekly audits costs less than a coffee.
 
 **Is this "AI SEO slop"?** The opposite. The commands force honesty: country-split truth before celebrating rankings, "0 quick wins exist" when none do, and product claims only from code. The methodology section on AI slop is one of the longer ones.
 

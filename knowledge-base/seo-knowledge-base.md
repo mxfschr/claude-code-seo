@@ -153,10 +153,26 @@
 - These sites CANNOT run both strategies at once (short-tail + long-tail)
 - That's why long-tail keywords are less competitive - not because of "low search volume" but because the big players aren't there
 - **Each page (one per long-tail keyword)** ranks more easily because the document name has maximum relevance to the search query
+- **The high-CPC, high-competition terms are the END of your road map, not the start** (David Quaid). List them first so you know where you're heading, then start at the low-difficulty side and earn your way up. `/seo-analyze` enforces exactly this with the proven ceiling and the parked list.
+
+### Free Keyword Research: What Link Sellers' Pages Rank For
+- Link sellers send spreadsheets of sites they sell placements on. Ask for the ones in your niche. Ignore the advertised names ("USA Today"), look at the pages that actually rank.
+- Those operators *must* keep their pages ranking, or the links they sell are worthless. So the titles, slugs and document names on their ranking pages have already been iterated and republished until they worked: pre-validated keyword research, for free.
+- Take the domains to a keyword tool (or Bing Webmaster Tools) and pull what they rank for. Pages that don't rank: walk away.
+- `/seo-link-vet` does this as a byproduct: every vetted domain also yields a keyword harvest.
 
 ### Keyword Placement (the Basics)
 - Place keywords deliberately in: page title, URL slug, meta description, H1, start of the first sentence
 - **Work them in naturally**, not as a list at the end
+- **Slug = the keyword core, nothing else.** Drop every word Google already infers: `/trip-to-como/`, not `/how-to-enjoy-a-wonderful-day-out-at-lake-como-in-italy/` (Google knows Como is a lake in Italy). The simpler the slug, the easier Google can slot the page into an index (David Quaid). Long title tags (below) are a separate decision: titles can carry variants, slugs carry the core.
+- **One keyword = one page on your domain** (two pages on the same keyword cannibalize, Section 1). On other people's domains you can reuse it as often as you like: LinkedIn post, YouTube title, partner page, slides, press release (Section 6).
+
+### Exact-Match Domains (EMDs): Relevance in the Domain Name
+- An EMD (`saascrm.com` for "SaaS CRM") carries the primary keyword's relevance in the domain itself. A branded domain (`hubspot.com`) has to earn that relevance with links and clicks first.
+- **Where it works:** SERPs that aren't fully contested yet. With little authority on either side, relevance decides (same ad-rank logic as Section 15). David Quaid runs EMDs from day one alongside the branded domain and reports them working with almost no backlinks in young niches (GEO/AEO). No data was shown, so treat that as a hypothesis to test, not a benchmark.
+- **The demotion exists, the blanket penalty doesn't.** The May 2024 leak contains `exactMatchDomainDemotion` (lineage: the 2012 EMD update against low-quality EMDs). Its strength is unknown (the leak has no weights, Section 26.4). It targets thin EMDs that exist only to rank.
+- **Rule: every EMD needs its own job.** A news site, a training/certification hub, a collaboration between two companies, a distinct product line. Big companies do the same (Google runs its free certification programs as their own properties). Never build an EMD as a link source for your main domain: then it's a PBN (Section 4), and networks built to manipulate search are what Google deindexes wholesale.
+- **It still starts at zero.** EMD relevance lowers how much authority you need, it doesn't replace the first clicks and links (Section 13, "New domains").
 
 ### Image SEO
 - Structure file names: `articles_best-standing-desks-2025_description.jpeg`
@@ -273,6 +289,8 @@
 - Do something newsworthy and put out a press release
 - Still works when done right
 - Also influences what AI tools say about your brand
+- **Root the headline in the keyword, not the brand** (David Quaid): "New coffee shop in Lake Tahoe", not "Cup of John's opens its doors". People search the category; the brand name is the end of the headline, not the start. The value is the keyword-rooted document, not the backlink
+- It can go out on launch day, there's no reason to wait (Section 13, "New domains")
 
 ### 8. Linkbait Content / Linkable Assets
 - Statistics pages, tools, etc. that attract links naturally
@@ -305,6 +323,18 @@
 - Fiverr freelancers for scraping + verifying prospects (relevant sites with organic traffic)
 - **Do the outreach YOURSELF** - keeps it authentic
 - Saves massive time at consistent quality
+
+### 13. Partner Link Building: Make the Linking Page Rank
+"Going to market on your own is the worst idea" (David Quaid). Microsoft, Google and HubSpot all go to market with partners. The same works at small scale:
+- **Pick partners, not link sellers:** non-competing businesses that serve the same customers. A plumber and an electrician in the same city, a SaaS tool and a hosting company that serves SaaS, a web designer and a local charity. From Google's and an LLM's point of view it doesn't matter whether a customer or a service provider talks about you.
+- **Publish the relationship.** Google and LLMs only know real-world relationships that are written down online. A partnership nobody publishes doesn't exist for them.
+- **The key move: help the partner's page rank.** Do their keyword research, name the joint page, podcast episode or slides after a keyword they can actually win, share it so it gets eyeballs. A link is only worth what the linking page earns (Section 25). Here you raise that value yourself. This is the active answer to Section 27.1: a link on an unranked page is a lottery ticket, and partner work is how you make the ticket win.
+- **Find the overlap.** Shared modifiers (same city, same audience) bridge two businesses (Section 1). "Commercial painters in Slough" and "moving services in Slough" share a place, so pages on the partner's site that serve that overlap can link to you naturally.
+- **Durability:** partner links survive because the partner benefits from the page too. Bought links on pages nobody maintains die off; a page that earns both sides traffic is the goose that lays the golden egg.
+- **Point links at deep pages, not your homepage.** Authority is page-level (Section 1): send each external link to the page that needs it (your Pos 4-20 pages, Section 17), with your bio or profile link aimed at the matching product page.
+- **Profiles can rank themselves.** Build your target keywords into bios and profiles on platforms that rank (LinkedIn, expert platforms, podcast guest pages). That's the modern, legitimate form of parasite SEO.
+- **Join communities long before you need them.** Pay it forward first. Founders who show up in a subreddit at beta asking for testers get banned: they ask a favor from a party of strangers.
+- **It's a numbers game.** Pitch 6-12 partners, trade publications or podcasts per idea. One hits. Giving up after each miss gets you nowhere.
 
 ---
 
@@ -362,21 +392,22 @@ Query Fan Out is the process AI search systems use to break ONE question into MA
 
 ### The core truth: LLMs = Google + synthesis
 
-**LLMs are NOT search engines with their own index:**
+**LLMs do NOT run their own ranking index:**
 - They cannot store the amount of data Google processes in one hour
 - They use standard SEO (Google, Bing, Brave Search) for rankings
 - They just break the prompt into different queries
+- They do keep a **cache** of the pages their fan-outs fetch, see Section 8B "2026 update"
 
 **Proof:**
 1. Take the Fan Out query from Perplexity
 2. Paste it into Google
 3. **Results are nearly identical, in almost exact order**
 
-**Real-Time Crawling:**
-- Perplexity sends crawlers in REAL TIME to fetch documents
+**Near-real-time crawling (with latency):**
+- Perplexity sends crawlers to fetch documents right after a search
 - You can rank in Google NOW
-- 2 minutes later you appear in Perplexity
-- Even if you weren't there 10 minutes ago
+- Minutes later you can appear in Perplexity, even if you weren't there 10 minutes ago
+- But appearing as a cited *source* is faster than having your content *quoted* in the answer: there is latency, see Section 8B "2026 update"
 
 ### Schema is NOT important for LLM visibility
 
@@ -439,6 +470,8 @@ Query Fan Out is the process AI search systems use to break ONE question into MA
 - **→ Those are LLM Fan Outs!**
 - Clicks come in as referral traffic, not search traffic
 
+**Caveat: this signal depends on the pipe.** It only shows up because LLM retrieval hits Google's SERPs in a way that logs impressions. Google is actively restricting automated SERP access (Section 13, "Rank readings are snapshots"). If that pipe changes, fan-out impressions in GSC can shrink while your actual LLM visibility stays the same. Cross-check with GA4 LLM referrals and Bing's AI Performance report (Section 8B) before reading a drop as a loss.
+
 ### Practical LLM optimization
 
 **Optimizing content for Query Fan Out:**
@@ -476,6 +509,7 @@ and what questions they're asking as prompts
 - Come back and test
 - Test multiple times to understand Drift
 - Adjust content to be "ever present"
+- **Test cited and quoted separately:** being linked as a source within minutes doesn't mean your content is used in the answer yet. Quaid sees fast citations but slower quoting (Section 8B "2026 update")
 
 ---
 
@@ -589,6 +623,7 @@ Content that covers the broader intent space - **definitions, comparisons, edge 
 - Fan-Outs are **different at different times of day**
 - LLMs often add "2025" to queries (matches page titles with a year)
 - The Drift tries to circumvent SEO tactics → only sites ranking for MANY variants get cited consistently
+- Fan-Outs are **different for different users**: search history and the running conversation shape them (see "2026 update" below)
 
 **Practical consequence of Drift:**
 You may need to **publish the same articles under different keyphrases** to target the different Drift phrases. If you rank for "E-E-A-T SEO guide" but not for "EEAT SEO guide 2025", you miss the drifted traffic.
@@ -601,14 +636,23 @@ You may need to **publish the same articles under different keyphrases** to targ
 - **Perplexity, ChatGPT etc. use standard SEO (Google/Bing) for rankings**
 - They just break the query into different queries
 - **Claude uses Brave Search** (a PageRank clone, works almost identically to Google)
+- They do cache what they fetch, but the cache is fed by search-engine results, not by a ranking system of their own (see "2026 update")
 
-### Real-Time Crawling
+### Near-Real-Time Crawling
 - LLM crawlers do NOT build a daily copy of the web like Google crawlers do
-- **It's a real-time scenario**
-- You can rank in Google and **2 minutes later** repeat the search in Perplexity and be in the results
-- Perplexity sends crawlers to fetch every document **in real time** for the synthesized answer
+- Fetching happens right after the search: you can rank in Google and **minutes later** repeat the search in Perplexity and be in the results
+- It *looks* real-time, but it isn't fully: there is a cache and there is latency (see "2026 update")
 
-**Proof:** David Quaid changed a blog post, requested re-indexing from Google, and the new content appeared in Perplexity immediately.
+**Proof:** David Quaid changed a blog post, requested re-indexing from Google, and the new content appeared in Perplexity within minutes.
+
+### 2026 update: caches, latency and personalization (David Quaid)
+Quaid revised the real-time picture himself (David Quaid SEO Show, ep. 10, 2026), drawing on Ryan Jones's teardown of Perplexity's retrieval architecture and on his own citation tests:
+- **LLMs cache what their fan-outs fetch.** Pages returned for fan-out queries land in a local store, an index of sorts, augmented alongside training data. That is still not an independent *ranking* index: which pages come back is decided by the search engines and crawl sources (Google, Bing, Common Crawl), and link-based authority (PageRank) remains the only objective quality filter.
+- **"Real time" has latency.** You can publish and be *cited* (linked as a source) within ~10 minutes, while being *quoted* (your content used in the answer) can lag. Brands also show up in answers because they were found in an earlier citation, even when they're not in the current citation list. That's where the "baked into the model" theories come from.
+- **Personalization is a new axis.** More of the user's search history feeds into each answer. An LLM can narrow its fan-out to one vendor (e.g. a `site:` search on a company the user keeps mentioning), which excludes everyone that vendor doesn't talk about.
+- **"3D ranking":** visibility = which keywords you rank for × how many × *when* (time and user context). Ranking once is no longer proof of permanent visibility.
+- **What stays the same:** the top (retrieval via search engines) and the bottom (quality control via links) are SEO. Only the fuzzy middle changes: how many pages get pulled, which ones get cited.
+- **Purchases still route through search.** Quaid reports from client work that buyers may research in LLMs, but the purchase comes through Google (or Bing) search and ads. Another reason BoF pages that rank in Google stay the priority (Section 9).
 
 ### How to see Query Fan Outs
 
@@ -637,6 +681,12 @@ You may need to **publish the same articles under different keyphrases** to targ
 - LLM clicks come in as **referral traffic**, not search traffic
 - Reports → Traffic Acquisition → Source = "chatgpt" or "perplexity" or "claude"
 - Then add landing page to see which pages get traffic
+
+**Bing Webmaster Tools: AI Performance report (public preview since February 2026):**
+- The only first-party report that shows fan-outs directly: **grounding queries** (the phrases the AI used to retrieve content it cited), cited pages, citation counts and **citation share** (a share-of-voice number no other AI tool gives you)
+- Covers Microsoft Copilot, Bing's AI summaries and select partner integrations
+- Limits: no clicks or traffic, and no mapping of which grounding query triggered which citation. Exportable as a spreadsheet
+- **Quaid's gap map:** collect your grounding queries + your organic queries + competitor names + the compare/evaluate phrasings around them. Mark where you're not cited, build content for those gaps, then measure what share of it lands
 
 **Click-through rate from LLMs:**
 - Extremely low: **0.01% to 0.1%**
@@ -668,9 +718,10 @@ You may need to **publish the same articles under different keyphrases** to targ
 - How many permutations there are
 
 **What we know:**
-- Perplexity and ChatGPT have NO search indexes of their own
+- Perplexity and ChatGPT have NO ranking index of their own (they cache fetched pages, but the search engines decide what gets fetched)
 - Sites like Reddit/Wikipedia only have influence IF they show up in returned queries
 - It runs on standard SEO
+- Google mostly ignores entity schema too: entities get created from search behavior (people searching a name and clicking a domain), not from markup that declares them (David Quaid)
 
 **Where Schema REALLY helps:**
 - Very specific cases like flight data, reviews
@@ -766,6 +817,13 @@ Example output for a cyber security agency:
 - Comparison keywords ("vs", "comparison", "alternative") have the highest conversion rates after direct-purchase keywords
 - **Example:** Write "Jetson vs Swagtron", then "but actually [your brand] beats both" — you intercept traffic from competitor comparisons
 
+### Competitor Brand × Your Differentiator (BoF)
+- Search demand that contains a competitor's brand plus a modifier the competitor *doesn't serve* is bottom-of-funnel traffic with almost no competition, and keyword tools rarely surface it (David Quaid)
+- **Quaid's example:** people search "Cup of John's matcha", but the shop only does coffee. A matcha place that targets that phrase picks up buyers in position 2-3 with nobody else competing
+- **SaaS version:** a Mac-only competitor + "windows", a subscription competitor + "lifetime" or "one-time", a cloud-only competitor + "self-hosted". The modifier must match something your product really does (never invent a differentiator)
+- **How to find them:** seed a keyword tool or the Google Ads keyword planner with the competitor's brand name, then filter the suggestions for modifiers like alternative, pricing, location, platform, features. `/seo-analyze` runs this as stream (d), using the differentiators from `/seo-product-facts`
+- Your competitors' success builds the road map to displace them: the more people search their brand, the more modifier gaps appear
+
 ---
 
 ## 10. GOOGLE'S ANTI-SPAM MEASURES
@@ -836,11 +894,26 @@ Example output for a cyber security agency:
 - **Any link that sends referral traffic = extremely valuable** (even nofollow!)
 - Brand mentions count too
 
+**But a branded query is "just another keyword" (David Quaid):** Google keeps no registry of companies. It learns that `cupofjohns.com` is "Cup of John's" because people search the name and click that domain. The authority those clicks build is narrow: relevant to the brand term, not to the whole site. It spreads outward through bridges (Section 1): brand → brand + category ("Cup of John's coffee") → category + place ("coffee Las Vegas"). Treat branded search as the seed of a topical footprint, not as a site-wide multiplier, and keep measuring SEO on non-branded traffic (Section 5).
+
+### New domains: no sandbox, only zero factors
+"New domains must sit for a year" is wrong (David Quaid). The time in SEO is the time it takes to earn authority, nothing else:
+- **Evidence:** scaled-content sites (black hat, they crash later) ramp up within weeks. If a blanket sandbox existed, they couldn't.
+- **Mechanism:** ranking behaves like a product of factors (Section 26.2). A new domain has near-zero authority and click history, so the product is near zero, regardless of page count. The leak's `hostAge` exists, but it sandboxes fresh *spam* (Section 26.4), not every new site.
+- **What actually unlocks a new domain:** a trickle of data on every factor. Relevance where the SERP is uncontested (long tail, exact-match slugs, an EMD with a purpose: Section 5), first clicks (branded searches from people who already know you), and a handful of real links from pages that rank (Section 6, "Partner Link Building").
+- **Start before launch.** Community, partners, profiles and the press release can all be prepared months ahead and go out on launch day. No committee watches new domains.
+
 ### Metrics are approximations
 - DR/DA behave non-linearly
 - Lose backlinks while shipping content in a tight topical band = traffic can still rise
 - Tools interpret a traffic increase as authority gain even when the backlink graph shrinks
 - **PageRank hasn't changed much in 10 years**
+
+### Rank readings are snapshots (hyper-rotation)
+- Google rotates results in some SERPs as often as hourly (David Quaid's observation), and personalizes for logged-in users: your own visits make your site rank higher for you
+- A single live SERP check can show you crashing or ranking when you're only rotating in or out for that hour
+- Rank trackers get noisier: Google is walling off automated SERP access (it sued the scraping API SerpApi in December 2025). Quaid's read: part of a moat against LLM companies riding Google's index
+- **Position truth = aggregated GSC data over 28+ days**, split by country (`/seo-quick-wins`). Use live SERPs to see *who* competes and *which* features show (AI Overview, video, PAA), not where you rank
 
 ### Give searchers what they want
 - Give searchers what they want ABOVE THE FOLD, before they scroll
@@ -898,6 +971,12 @@ Example output for a cyber security agency:
 - **Prioritize backlinks from pages WITH traffic** (1 click/week is enough; DA90 without traffic = worthless)
 - **Recycle pSEO URLs** for perishable content (jobs, offers, events)
 - **Optimize CTR only once you're at position 1-5** (before that it does nothing)
+- **Partner links where you help the linking page rank** (the link is worth what that page earns)
+- **Point external links at deep pages** that need authority, not at the homepage
+- **Target competitor brand + a modifier they don't serve** (BoF with almost no competition)
+- **Keep slugs to the keyword core** (`/trip-to-como/`, drop what Google infers)
+- **Start a new domain's authority work before launch** (there's no sandbox to wait out)
+- **Use Bing's AI Performance report** for grounding queries and citation share
 
 ### ❌ DON'T:
 - Keyword lists at the bottom of the page
@@ -915,7 +994,7 @@ Example output for a cyber security agency:
 - Treating site speed as a ranking factor
 - Emojis in meta descriptions
 - **Implementing schema for LLM visibility** (doesn't help)
-- **Believing LLMs have their own search indexes**
+- **Believing LLMs have their own ranking indexes** (they cache, but search engines decide what gets fetched)
 - **The "everything SEO bagel"** — too many unnecessary steps
 - **Asking ChatGPT "what did you search for?"** (it lies/doesn't know — use DevTools)
 - **Treating LLMs as research tools** (they just Google and regurgitate blogger versions)
@@ -929,6 +1008,10 @@ Example output for a cyber security agency:
 - **Optimizing CTR at position 20+** (nobody clicks on page 3 — logically pointless)
 - **DA90 as a backlink criterion** (it's a homepage assumption, not inherited by every page)
 - **pSEO pages with identical title + H1** (Google sees duplicates, no matter what the rest says)
+- **Modeling a domain-age sandbox** (`hostAge` targets fresh spam; slow starts are zero factors)
+- **EMDs as link sources for your main domain** (that's a PBN; every EMD needs its own job)
+- **Reading one live SERP as your position** (hyper-rotation + personalization; GSC over 28 days is the truth)
+- **Reading a drop in GSC fan-out impressions as lost LLM visibility** without cross-checking GA4 and Bing
 
 ---
 
@@ -1403,6 +1486,7 @@ LLMs (ChatGPT, Perplexity, Gemini) scrape and index news sources and press-relea
 ### Practical implementation
 
 1. **Write the press release:**
+   - **Headline = the query people search, brand at the end** ("New screenshot tool for Windows", not "[Brand] launches v2"). Searchers look for the category, not for a name they don't know yet (Section 6.7)
    - Find a newsworthy angle (launch, update, study, award)
    - Include a quote from the "founder" (LLMs love quotes with attribution)
    - Product name + USP + website in the first 2 paragraphs
@@ -1644,6 +1728,7 @@ with `α + β + γ ≈ 1`. Three implications:
 1. **No neural black box** for the top-level combination — explicitly a weighted linear sum
 2. **Log-scaling on every signal** — prevents any single signal from overruling all others
 3. **Monotonicity** — more of a good signal must never lower the score
+4. **A zero factor zeroes the product.** In the multiplicative reading, a page with near-zero authority or click history scores near zero no matter how much content you add: 1,000 pages × 0 = 0, 10,000 pages × 0 = 0. Even a tiny trickle of data on every factor beats a lot of data on some. This is what new domains experience as a "sandbox" (Section 13).
 
 **Mathematically equivalent: the multiplicative form**
 `log(a·b·c) = log a + log b + log c` — so a multiplicative boost stack is mathematically identical to the log-additive form. Pipelines that compute `score × multiplier1 × multiplier2 × ...` are already structurally close to the DOJ form.
@@ -1763,24 +1848,26 @@ Section 5 ("date in ALL key locations") is `syntacticDate` optimization. The Sec
 
 Twiddlers are a **re-ranking layer AFTER initial retrieval**: first the top 1,000 candidates are found (Ascorer), then Twiddlers cut that down to the top 100 for SuperRoot. Twiddlers combine multiplicatively — equivalent to the log-additive form from 26.2.
 
-#### Demotions (multiplier < 1)
+**The leak names these signals, it does not weigh them.** The Content Warehouse documentation contains attribute names and short descriptions, no multipliers, weights or thresholds. Earlier versions of this table listed effect sizes like "×0.5" or "×0.2-0.7": those numbers had no source and were removed. What the leak supports is the *direction* (demotion or promotion) and the description below, nothing more.
 
-| Twiddler | Effect | Source |
+#### Demotions (direction: score down)
+
+| Signal | What the leak says / what it targets | Source |
 |---|---|---|
-| `babyPandaDemotion` / `babyPandaV2Demotion` | Helpful-content penalty (×0.3-0.7) | May 2024 leak |
-| `exactMatchDomainDemotion` | EMD without a brand → ×0.5 | May 2024 leak |
+| `babyPandaDemotion` / `babyPandaV2Demotion` | Helpful-content-style quality demotion | May 2024 leak |
+| `exactMatchDomainDemotion` | Demotion for exact-match domains (lineage: the 2012 EMD update against low-quality EMDs). Strength unknown, see Section 5 "Exact-Match Domains" | May 2024 leak |
 | `productReviewPDemoteSite` | Weak review sites | May 2024 leak |
 | `AnchorMismatch` | Per-link demotion when the anchor does not match the target topic | May 2024 leak |
-| `SerpDemotion` | High pogo-stick rate → ×0.4-0.8 | May 2024 leak |
+| `SerpDemotion` | Demotion based on SERP behavior (e.g. pogo-sticking back to the results) | May 2024 leak |
 | `NavDemotion` | Poor on-site UX after the click | May 2024 leak |
-| `hostAge` | Sandboxes new domains (×0.2-0.7 for <6 months old) | May 2024 leak |
+| `hostAge` | "The earliest firstseen date of all pages in this host/domain", used in a twiddler to sandbox **fresh spam** at serving time. Not a blanket penalty on new domains, see Section 13 "New domains: no sandbox" | May 2024 leak |
 | `unauthoritativeScore` / `scamness` / `uacSpamScore` | Actively computed spam penalties | May 2024 leak |
 
-#### Promotions (multiplier > 1)
+#### Promotions (direction: score up)
 
-| Twiddler | Effect | Source |
+| Signal | What the leak says / what it targets | Source |
 |---|---|---|
-| `FreshnessTwiddler` | News/trending boost (×1.1-1.4) | May 2024 leak |
+| `FreshnessTwiddler` | News/trending boost | May 2024 leak |
 | `authorityPromotion` | Positive boost field | May 2024 leak |
 | `queriesForWhichOfficial` | Brand protection (for your own brand name) | May 2024 leak |
 
@@ -1849,9 +1936,10 @@ If you store per-page embeddings, both leak signals are directly computable:
 
 **Twiddler stack**
 
-Structure boosts/demotions as an explicit stack of bounded multipliers (mathematically equivalent to the log-additive DOJ form — see 26.2 and 26.4). Approximable demotions:
-- Originality below threshold → ×0.85 (Panda-style quality demotion)
-- Domain age < 6 months → ×0.7 (sandbox approximation, if domain age is available)
+Structure boosts/demotions as an explicit stack of bounded multipliers (mathematically equivalent to the log-additive DOJ form — see 26.2 and 26.4). The values are your own tuning choices, not Google's (the leak contains none). Approximable demotions:
+- Originality below threshold → ×0.85 (Panda-style quality demotion, own heuristic)
+
+Do **not** add a domain-age penalty. `hostAge` targets fresh *spam*, and a new domain's slow start is already explained by near-zero click and link factors in the multiplicative form (26.2). Modeling age on top double-counts it and makes your tooling more pessimistic about new sites than Google is.
 
 Hard to approximate without Google-internal data (document as known limits rather than faking them):
 - `goodClicks` / `badClicks` / `lastLongestClicks` differentiation — GSC delivers aggregates only, no per-session browser telemetry

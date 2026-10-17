@@ -47,7 +47,7 @@ Group Owned + Striking-distance queries into 3–6 topical clusters (by shared h
 
 For each cluster compute a **cluster ceiling** = highest KD with ≥2 top-7 wins *in that cluster* (fall back to the site ceiling if <2 examples). Comparison/alternative clusters often punch far above the site average — that's the whole point.
 
-### Step 4 — Generate candidates from three streams
+### Step 4 — Generate candidates from four streams
 Run these in parallel:
 
 **(a) Quick-Win Push** — directly from the Striking-distance bucket (Step 1). No API cost. These are keywords you already rank Pos 8–20 for.
@@ -55,6 +55,13 @@ Run these in parallel:
 **(b) Bridge Expansion** — for each authority center, call `mcp__dataforseo__dataforseo_labs_google_related_keywords` (seed = cluster's strongest keyword, location_name="United States", language_code="en", limit=60). These are the adjacent keywords you don't own yet (Section 1 bridges).
 
 **(c) Content Gap** — optionally call `mcp__gsc__content_gaps` and/or seed `mcp__dataforseo__dataforseo_labs_google_keyword_ideas` from cluster heads to surface terms competitors rank for and you don't.
+
+**(d) Competitor Brand × Differentiator** (Section 9; only if the site sells a product with named competitors). Searches for a competitor's brand plus a modifier that competitor doesn't serve are BoF traffic with almost no competition.
+- **Competitors:** brands that appear in your Owned/Striking-distance queries ("X vs Y", "X alternative") plus any `/vs/<competitor>` page in the website repo. Take the top 3 by impressions.
+- **Differentiators:** run the `/seo-product-facts` extraction for sections B (pricing), C (platforms) and G (per-competitor differentiators) only. Code-verified facts only, never invent one.
+- For each competitor call `mcp__dataforseo__dataforseo_labs_google_keyword_suggestions` (keyword = competitor brand, location_name="United States", language_code="en", limit=100).
+- **Keep** suggestions whose modifier matches a verified differentiator (platform: "windows", "linux", "web", "online"; model: "lifetime", "one time", "free", "open source", "self hosted"; a feature the competitor lacks) plus the generic BoF modifiers "alternative", "vs", "pricing", "cheaper". **Drop** navigational noise (login, download, support, crack, careers) and any modifier your product doesn't really cover.
+- These are BoF by definition. Run them through the same Step 5 filter: they usually land far below the ceiling.
 
 Merge, dedupe, drop keywords you already Own (Pos ≤ 7 — covered) and obvious off-topic noise (keywords sharing no entity/term with any authority center — this is the niche filter the lightweight commands lack).
 
@@ -80,7 +87,8 @@ Pick a deliberately diverse set:
 1. **Quick-Win Push** — best Striking-distance keyword (already Pos 8–20). Lowest effort, fastest result.
 2. **Bridge Expansion** — best realistic new keyword adjacent to a strong cluster. Grows the footprint.
 3. **Content Gap / Authority Builder** — best realistic keyword from a *different* cluster (diversify the topical surface).
-4–5. Next best of any type.
+4. **Competitor Gap** (product sites only): the best stream (d) keyword, competitor brand + a modifier your product verifiably covers. State the differentiator and its `file:line` source.
+5. Next best of any type.
 
 Also flag (route, don't fully expand here):
 - **Re-Evaluation** candidates (Owned-cluster pages now at Pos 8–25, >6 mo old) → "run `/seo-re-eval`".
@@ -99,7 +107,7 @@ Also flag (route, don't fully expand here):
 ### Do next (priority order)
 For each of 3-5 picks:
 
-#### #1 · [Keyword]  —  [Quick-Win Push | Bridge Expansion | Content Gap]
+#### #1 · [Keyword]  —  [Quick-Win Push | Bridge Expansion | Content Gap | Competitor Gap]
 **Why this**: [proven-authority reason, e.g. "you rank Pos 11 for it / KD 34 ≤ cluster ceiling 36 — within proven reach"]
 Vol X/mo · KD Y (ceiling Z) · Funnel BoF · {already Pos N | new page}
 **Plan**: slug `/...` · Title (150-220c) "..." · doc type {blog|comparison|landing|thin-starter} · {word target}
@@ -116,7 +124,7 @@ Vol X/mo · KD Y (ceiling Z) · Funnel BoF · {already Pos N | new page}
 After the table, offer: *"Say `brief 2` and I'll generate the full publish-ready brief for pick #2 (using the `/seo-next-content` format) — product-grounded by a LIVE `/seo-product-facts` pull from your app + website code (every run, no cache), so every comparison carries a truthful [Product] column and a real CTA, never invented features."*
 
 ## Cost
-~$0.12–0.18 per run (1-2 bulk_keyword_difficulty batches + 1-2 related_keywords + ~5 SERP live). GSC calls are free. Comparable to one `/seo-next-content`, but covers the whole site instead of one cluster.
+~$0.12-0.24 per run (1-2 bulk_keyword_difficulty batches + 1-2 related_keywords + ~5 SERP live, plus ~$0.02 per competitor for stream (d), max 3). GSC calls are free. Comparable to one `/seo-next-content`, but covers the whole site instead of one cluster.
 
 ## Operating rules
 - **NEVER gate on DR.** The proven ceiling (Step 2) is the only difficulty bar. DR appears only in explicit cold-start runs (<15 Owned queries).
