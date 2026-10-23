@@ -92,7 +92,7 @@ Pick a deliberately diverse set:
 
 Also flag (route, don't fully expand here):
 - **Re-Evaluation** candidates (Owned-cluster pages now at Pos 8–25, >6 mo old) → "run `/seo-re-eval`".
-- If a cluster is deep and templatable (locations/tools/alternatives) → note pSEO potential (Section 20).
+- If a cluster is deep and templatable (locations/tools/alternatives) → note pSEO potential (Section 20), but only where each page has its own data or inventory. Search volume alone as the reason = scaled content abuse (Section 10).
 
 ## Output Format
 

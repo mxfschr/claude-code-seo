@@ -247,7 +247,7 @@
 - If it feels like "SEO optimized copy" → Google hates it
 - Keyword stuffing is obvious and gets punished
 - **Write for the human behind the computer searching for this keyword**
-- ChatGPT "SEO-optimized" content = recipe for a penalty
+- **AI is not the trigger.** ChatGPT "SEO-optimized" copy is weak because it writes around the query instead of answering it (Section 16), not because a machine wrote it. Google's spam policy targets mass production "no matter how it's created" (Section 10, "Scaled content abuse")
 
 ---
 
@@ -832,6 +832,7 @@ Example output for a cyber security agency:
 1. **Cloaking:** Showing different content to crawlers vs users
 2. **Keyword stuffing:** Cramming a page full of keywords
 3. **Paid links:** Paying for links to manipulate PageRank
+4. **Scaled content abuse** (spam policy since March 2024): many pages generated "for the primary purpose of manipulating search rankings", by AI, automation, scraping or humans. See below
 
 ### Google's approach:
 - More than 1 million spam pages are created PER HOUR
@@ -849,7 +850,23 @@ Example output for a cyber security agency:
 - **Affected 11.8% of all Google searches**
 - Designed to demote low-quality sites that offer no useful original content
 - Better rankings for high-quality sites with original research, in-depth reports, thoughtful analysis
-- Shows: Google CAN and WILL punish bad content
+- Shows: Google CAN and WILL demote at scale, and the net catches sites that didn't deserve it (see "Expect overcorrection" below)
+
+### Scaled content abuse: purpose, not method (David Quaid, Oct 2026)
+The wave of "Google is punishing AI content" posts misreads what's happening. What sites are hitting is scaled content abuse enforcement, and that policy is method-agnostic by design.
+- **The test is volume + primary purpose.** Were these pages mass-produced mainly to manipulate rankings rather than to help anyone? Google's own examples list generative AI next to scraping, stitching content together, spreading it over multiple sites and keyword-filled pages that make no sense to a reader. 3,000 near-identical "[service] in [city]" pages written by a human team fall under it; 50 carefully edited AI-assisted articles don't. Local service page farms got hit for this long before ChatGPT existed.
+- **What gets detected is the shape of the site, not the writing.** Google doesn't grade prose (Section 16; E-E-A-T is a rater framework, not a score). It can detect the patterns of mass production: templated structure, thin variation between pages, publishing velocity, and a page count that makes no sense for the entity behind the site. Quaid puts the tripping point at roughly 100+ pages built that way. That's his estimate, no data shown.
+- **That's why "beating" it is alchemy.** Better prompts, more variation, a different template, a layer of human editing on top: none of it changes the shape, and enforcement only gets better.
+- **Scale is fine when the pages have a reason to exist.** Amazon, eBay, Reddit, Zillow, Yelp and TripAdvisor run millions of generated pages and rank, because each page serves someone who wants it. A marketplace with 2 million listings has 2 million pages because it has 2 million things to sell (Section 20).
+- **Expect overcorrection.** Panda, Penguin and the helpful content updates all swept up legitimate sites alongside the guilty ones. Sites with lots of templated pages will get caught here too. The fix is still the same: make each page's purpose unmistakable, or have fewer pages. Not a better content generator.
+
+### A penalty is a throttle, not a removal
+- Algorithmic enforcement usually keeps you in the index: your pages still show up in a `site:` search, they just can't rank for anything that matters. The throttle can be temporary, semi-permanent or permanent, depending on what tripped it and whether Google thinks the behavior will stop (David Quaid).
+- **"We got de-indexed" usually means "we stopped ranking".** Different problem, different fix. Check `site:` and GSC's Page indexing report first: pages indexed + traffic gone = throttled.
+- Full removal does exist. Google's policy says violating sites "may rank lower in results or not appear in results at all", and the GSC Manual Actions report shows when a human reviewer acted. Look there before you diagnose.
+- Neither is the same as "Crawled, not indexed" on individual pages, which is an authority problem (Section 23).
+
+**Source:** David Quaid, [AI Content Penalty](https://primaryposition.com/blog/ai-content-penalty/) (Primary Position, 2026-10-22); Google Search Central, [spam policies: scaled content abuse](https://developers.google.com/search/docs/essentials/spam-policies)
 
 ---
 
@@ -1012,6 +1029,9 @@ Example output for a cyber security agency:
 - **EMDs as link sources for your main domain** (that's a PBN; every EMD needs its own job)
 - **Reading one live SERP as your position** (hyper-rotation + personalization; GSC over 28 days is the truth)
 - **Reading a drop in GSC fan-out impressions as lost LLM visibility** without cross-checking GA4 and Bing
+- **Mass-producing pages because a keyword tool showed volume** (scaled content abuse; the policy is method-agnostic, AI or human)
+- **Blaming AI for a scaled-content hit** (the fix is a reason for each page to exist, or fewer pages, not a better generator)
+- **Calling a ranking drop "de-indexed"** without checking `site:` and GSC (indexed + invisible = throttled, Section 10)
 
 ---
 
@@ -1130,6 +1150,7 @@ The main difference lies in composition and production.
 - Keyword stuffing in the answer
 - FAQ pages without a parent article
 - Accordion when you have little authority
+- Bulk runs across your whole keyword list. A handful of answers per main article is the method; dozens of LLM-written pages a week is the scaled-content shape (Section 10)
 
 ---
 
@@ -1252,6 +1273,7 @@ Not every page has to be a 2,000-word article from day one. A "Thin Starter Page
 
 - **Yes:** New niche, untested keywords, long-tail queries, PAA questions
 - **No:** Head keywords you know you rank for, money pages, competitive SERPs
+- **Not as a batch.** A thin starter is one page for one real query, written to answer it. Hundreds at once from the same template, at a velocity that makes no sense for your site, is the scaled-content shape (Section 10), no matter who or what wrote them
 
 ### Advantage over "research first, then write"
 
@@ -1376,7 +1398,7 @@ Hub: /jobs/
 
 ### pSEO traps
 
-- **Thin content penalty:** Google detects and penalizes template pages without real content
+- **Scaled content abuse:** the risk isn't the template, it's the reason. 5,000 pages that exist only because a keyword tool showed search volume are a scaled content site, whatever you call it internally. Many "we got hit for pSEO" posts describe exactly that: the technique didn't get them penalized, the purpose did (David Quaid, Section 10)
 - **Index bloat:** Thousands of low-quality pages can damage the entire domain
 - **Duplicate content:** Templates that differ in only one word
 - **No data:** "Best restaurants in [city]" without real restaurant data = worthless
@@ -1413,6 +1435,7 @@ Hub: /jobs/
 - If you build 200 pSEO pages covering 2,000 keywords and ONE takes off → that page becomes an authority center
 - Like spoke-and-hub: the successful page distributes authority to its child pages
 - Low KD + no competition = the best pSEO candidates
+- Each of the 200 still needs its own reason to exist (real data, real inventory, see Prerequisites). If search volume is the only reason, that's the scaled-content pattern from the traps above
 
 ---
 

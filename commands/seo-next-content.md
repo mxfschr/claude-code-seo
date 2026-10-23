@@ -13,7 +13,7 @@ Methodology (knowledge base sections):
 - Section 9: Bottom-of-Funnel content prioritized over Top-of-Funnel. 400-800 words. "X vs Y" / "best X for Y" patterns convert better.
 - Section 18: Thin Starter Pages — 200-400 words, publish, let GSC validate before expanding.
 - Section 19: NavBoost 13mo-window — new pages get evaluated with current site authority.
-- Section 20: pSEO templates if there's a data-source (locations, comparisons, alternatives).
+- Section 20: pSEO templates if there's a data-source (locations, comparisons, alternatives). Every page needs its own reason to exist beyond search volume, otherwise it's scaled content abuse (Section 10).
 - Section 26.3: siteRadius — don't write off-topic pages, they reduce site cohesion.
 
 ## Execute in order
