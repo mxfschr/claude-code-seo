@@ -49,7 +49,7 @@ Analyze the **composition**: Is there an AI Overview? Are competitors Reddit/Wik
 
 ### Step 5: Synthesize action recommendations
 For each quick-win, recommend ONE specific action:
-- **Title/Meta optimization** ONLY if domain is Position 1-5 in the main market (Section 24)
+- **Title/Meta optimization** ONLY if domain is Position 1-5 in the main market (Section 24). Controlled title tests worth trying (KB Section 28.2, SearchPilot): "Updated" wording instead of month + year, an always-current price instead of a static one. Frame them as tests with a change-log entry, not as sure wins
 - **Content depth expansion** if at Position 4-10 with AI Overview competition
 - **Internal link push** if at Position 6-15 and KD<40 (Section 17: route authority FROM high-click hub pages TO this one; never link TO pages already at Pos 1-3 or Pos 95+)
 - **Re-Evaluation Republish** if Position 8-25 + KD<30 + page is >6 months old (route to /seo-re-eval)

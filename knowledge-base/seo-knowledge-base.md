@@ -90,7 +90,7 @@
 7. **Site speed does not matter for SEO** (but it does for user experience)
 8. **Google cannot judge whether a page is universally "the best"**
 9. **EEAT is not a thing in SEO** (vague, variable, not measurable)
-10. **Low-DA backlinks do not "harm your site"**
+10. **Low-DA backlinks do not "harm your site"** (published tests agree the disavow tool only helps under a manual action; exact-match anchor campaigns are the exception worth avoiding, Section 28.2)
 
 ### u/WebLinkr's Extended 12-Myth List:
 1. Schema makes you rank ❌
@@ -196,6 +196,8 @@ As reported in John Campbell's writeup and presented by Edward Sturm:
 - Structure file names: `articles_best-standing-desks-2025_description.jpeg`
 - The keyword is automatically in every image because it's in the slug
 - Additional description after the underscore for more keyword reach
+- **Thumbnail in the SERP:** Google lists `og:image` and `primaryImageOfPage` as ways to suggest it ([docs](https://developers.google.com/search/docs/appearance/google-images)). Choose the image that stands out among the other results, it's a CTR lever (Section 28.2)
+- **EXIF geodata:** mixed evidence. One travel site gained on Google Lens landmark queries, a 10-week test on 27 local businesses found little to no effect (Section 28.2). Not worth it for local SEO
 
 ### Using Google Search Console
 - Take queries from GSC and work them NATURALLY into relevant pages
@@ -260,6 +262,7 @@ As reported in John Campbell's writeup and presented by Edward Sturm:
 - URL: `best-standing-desks-2025`
 - Every year: 301 redirect from the old URL to the new one
 - Date in ALL key spots: page title, URL slug, H1, meta description, start of the first sentence
+- **Counterpoint, controlled:** in a SearchPilot test, replacing month and year in titles with "Updated Daily" lifted organic traffic 11% (Section 28.2). Most people don't type the year. The year still matters where the searcher or an LLM fan-out adds it (Section 7, "Drift"); test both on your own SERPs
 
 ### Write for Humans, Not for Search Engines
 - If it feels like "SEO optimized copy" → Google hates it
@@ -314,6 +317,7 @@ As reported in John Campbell's writeup and presented by Edward Sturm:
 - Statistics pages, tools, etc. that attract links naturally
 - Works better when you already have traffic
 - The content must actually be linkable
+- **Strongest form: your own data.** Research built from data only you have gets links, mentions and LLM citations; calculators and the statistics journalists search for work too (Section 28.3)
 
 ### 9. Unsplash Backlink Hack
 - Upload relevant high-quality photos to stock sites (Unsplash, Pexels)
@@ -569,6 +573,8 @@ and what questions they're asking as prompts
    - Explain why your brand is a fit for these keywords
 
 3. **Lots of documentation about your brand**
+   - One plain sentence about what you do ("HubSpot automates email marketing"), identical on every channel (Section 28.3)
+   - Publish changes explicitly: a new feature, price or name that lives only inside your app doesn't exist for LLMs
 
 4. **Be indexed in Google AND Bing**
    - Use Bing Webmaster Tools
@@ -1045,6 +1051,10 @@ Before publishing more, look at what you already have (David Quaid). A blog with
 - **Grow page count in ~25% steps** (Quaid's heuristic; start PAA pages with 10-12)
 - **Split traffic drops by query × page** before diagnosing (pogo-sticking hits single keywords, not whole pages)
 - **Pay down content debt before publishing more** (prune, fix, retarget, move off-topic folders to their own domain)
+- **Keep an SEO change log** (page, date, baseline position, change, why; revisit after ~3 months)
+- **Test one change against a control group** of similar pages, not before vs after
+- **Publish research from your own data** (links, mentions and LLM citations in one asset)
+- **One plain "[brand] does [X]" sentence, identical on every channel**
 
 ### ❌ DON'T:
 - Keyword lists at the bottom of the page
@@ -1086,6 +1096,8 @@ Before publishing more, look at what you already have (David Quaid). A blog with
 - **Undisclosed commercial links from media you own** (the client pays you, so the link is paid: label advertorials, use `rel="sponsored"`)
 - **Tool authority scores as a link criterion** (traffic-based scores rise when a site ranks for the tool's own keyword list)
 - **Separate pages for synonyms or plurals** (Google expands them like an OR; the second page cannibalizes the first)
+- **Trusting a published case study's percentage** (publication bias + bundled before/after; look for a control group)
+- **Sitewide footer links with sensitive anchors** (they describe every page, and ad review reads them too)
 
 ---
 
@@ -2018,7 +2030,7 @@ Boost topic clusters where the site already earns clicks (e.g. ×1.05 growing, �
 - SERP-intent override: if 6 of the top 10 results for a keyword are commercial, classify it bottom-of-funnel regardless of phrasing
 - Funnel-position pattern matching (BoF/MoF/ToF indicator terms)
 - GSC match boost: upweight topics where the site already ranks for related queries — a click-match (C) precursor
-- Anchor defaults: when generating internal links, default the anchor text to the target page's primary keyword (descriptive 2-5-word anchors beat generic ones) — a direct A-component heuristic
+- Anchor defaults: when generating internal links, default the anchor text to the target page's primary keyword (descriptive 2-5-word anchors beat generic ones) — a direct A-component heuristic. Published tests found little-varied, exact-match internal anchors beat varied ones (Section 28.2); for backlinks the opposite caution applies
 - The full composition mirrors the DOJ ABC structure: `T = a_A·AnchorMatch + a_B·BodyMatch + a_C·ClickMatch` with documented weights
 
 **Site modifiers**
@@ -2106,5 +2118,51 @@ The sections above are distilled from other people's work. This one is different
 **What happened:** the stuck page climbed from **position 13.8 to 5.4** over the following weeks. Page two to top half of page one.
 
 **Lesson: internal links from pages that earn clicks are the cheapest authority you own. Route them deliberately — contextual, into the 10-20 zone, few at a time.**
+
+---
+
+## 28. WHAT PUBLISHED TESTS SHOW (Krešimir Ćorluka's SEO Meta-Study, 2026)
+
+Krešimir Ćorluka (Croatian agency owner, runs Croatia SEO Summit) spent summer 2026 collecting 30,000+ SEO documents and filtering them to the ones with a measurable outcome: 9,249 case studies, tests and papers by his count on Edward Sturm's podcast. Two models from different vendors extracted tactic and outcome from each document independently; below ~0.85 agreement it went to a stronger model, and every number had to appear in the source. He ranked tactics by evidence quality (page count, control group) and actionability, and published the best 182 as a free PDF, no email gate. Figures below are as he recalled them on the podcast unless a primary source is linked; check the PDF before quoting.
+
+### 28.1 How to read SEO case studies
+- **Publication bias is the biggest distortion.** Agencies publish wins. SearchPilot is almost the only source of negative results in his corpus. A "median +200%" across published case studies says more about what gets published than about what SEO does.
+- **Most tests are bundled before/after:** several changes at once, no control group, so seasonality and traffic-mix shifts can't be separated from the tactic. Of the ten best-evidenced tactics, nine are SearchPilot controlled tests and one is an Ahrefs control study.
+- **Run your own tests controlled.** One change, a test group of 50-100 similar pages and an untouched control group; compare the groups, not before against after. Titles are the easiest thing to test this way. Side projects with nothing to lose are where to try the weird stuff.
+- **Keep an SEO change log** (Edward Sturm): page, date, baseline position, what changed and *why*; revisit after ~3 months. Without it you can't tell which change worked. Section 27 is that log for my sites.
+- **What works for a competitor is a bet for you.** A hotel client asked why a competitor's network of EMD doorway sites held four slots. Ćorluka's read: old sites that don't change don't trigger re-evaluation; a new one built today gets caught, possibly with a manual action. Same for an "everyone has five-star schema" argument (28.2).
+
+### 28.2 Tactics and what the evidence says
+
+| Tactic | Result | Evidence | Read it as |
+|---|---|---|---|
+| Internal anchors: exact match / little variation | Beat varied anchors | Several tests | Consistent with the anchor default in 26.6. Backlinks are different (disavow row) |
+| Title fully in capitals | +14% organic traffic on mobile, desktop inconclusive | SearchPilot, [Feb 2025](https://www.searchpilot.com/resources/case-studies/14-percent-increase-on-mobile-with-all-caps) | CTR lever on one site's SERPs. Test before rolling out |
+| "Updated Daily" instead of month + year in the title | +11% | SearchPilot, [Jun 2022](https://www.searchpilot.com/resources/case-studies/last-updated-in-title) | Most people don't type the year; fresh wording stands out (Section 5, "Content Freshness") |
+| Price in the title | Static price −7%, dynamic price +10% | SearchPilot, [test](https://searchpilot.com/resources/case-studies/seo-split-test-lessons-adding-dynamic-prices-to-titles-versus-static-prices) | Only with a price that is always current |
+| Prominent brand CTA block on product pages | +80% conversions | 2 tests | Mostly visibility: key info where people look |
+| 3-4 product bullets right below the heading | Positive | Tests (bundled) | Same pattern: say what it is and who it's for above the fold |
+| AI-written product descriptions grounded in real product data | +85% (clicks or revenue, he wasn't sure which) | Test | AI isn't the trigger (Section 5). Weak supplier copy replaced with real facts |
+| Expert quotes, statistics tables "for AI citations" | Positive | Weak: citation tracking is mostly single snapshots of personalized answers | Old best practices with a new label. Measure with server logs (are LLM bots fetching the page more?) and AI referral traffic, not by asking ChatGPT once |
+| llms.txt | Nothing | The positive reports were bundled before/after | Myth #11 holds |
+| Disavow | Helps only under a manual action | Tests | One study disavowed exact-match-anchor backlinks and saw +300% clicks, baseline unclear (likely recovery from a demotion). Don't build exact-match anchor backlinks at scale (`phraseAnchorSpamCount`, 26.3) |
+| Category links in the footer | −5% | 1 test | Also his own mistake: drug names in a health client's sitewide footer got the client's Google Ads flagged. Sitewide links say something about every page |
+| EXIF geodata + `ImageObject` schema on destination photos | +90% on Google Lens "photos of [landmark]" queries | 1 travel site, 2026 | Contradicted for local: Jake Hundley's 10-week geotagging test on 27 lawn-care businesses found little to no effect, his LocalBusiness-schema study none. Image-search niche only |
+| `og:image` as the SERP thumbnail | Google often uses it | His observation; Google lists `og:image` and `primaryImageOfPage` as ways to [specify a preferred image](https://developers.google.com/search/docs/appearance/google-images) | CTR lever: pick an image that stands out in that SERP, separate from the featured image if needed |
+| Removing review/`AggregateOffer` markup after an unexplained drop | Rankings back the next day | 2 clients, his anecdote | Correlation, n=2. His expectation: review rich results go the way of HowTo and FAQ |
+| Nofollow link from a ranking forum page | Target page and the YouTube video embedded on it started ranking | Joy Hawkins, repeated several times by her account | Consistent with Section 13: links that bring traffic count, nofollow included |
+
+### 28.3 What wins links and citations
+- **Original data beats traditional link building** (his "one thing to do tomorrow"). Analyze data the client already has and publish it as research: it gets shared, linked, and cited by LLMs for questions around the industry. His car-insurance client's "counties with the most traffic accidents" study comes up for "which county has the worst drivers", even though he admits the study was confounded (through traffic, not local drivers).
+- **Linkable assets still work:** an architecture firm's interactive sustainability calculator; a finance site that combined calculators with pSEO location guides, growing from 100 to 950+ pages. Edward Sturm's caution: pSEO that grows like that often shows the "mountain" traffic pattern later (Section 20).
+- **Statistics journalists search for.** Pages answering "[topic] statistics [country]" where nobody else has the number collect journalist links.
+- **One plain sentence about what you do, on every channel.** Subject-verb-object, e.g. "HubSpot automates email marketing" (his example). Same brand name, same tone, everywhere: website, profiles, digital PR. Algorithms and people connect that sentence across pages.
+- **Publish changes explicitly.** A hotel that became pet-friendly but never said so prominently gets "no" from ChatGPT. A renamed company needs a post, a press release, a video. Hidden in a booking flow, JavaScript or a video, the change doesn't exist for LLMs.
+- **Answer every question customers ask.** Sales teams, complaints, AlsoAsked, PAA. Not as one long page: a table here, an FAQ there, a video. YouTube works well right now.
+
+### 28.4 What nobody has tested well
+Pagination (he keeps `index, follow`; Google has said long-term `noindex` is eventually treated as `nofollow`), XML sitemaps, and content pruning on large sites (published pruning cases cover 20-100 posts, never hundreds of thousands of pages or whole product categories).
+
+**Source:** Krešimir Ćorluka on the Edward Sturm podcast (2026) and his LinkedIn post on the study (30,000+ documents, 7,329 findings, 1,105 evidence clusters, 182 tactics); SearchPilot case studies as linked; Jake Hundley's tests as covered by Search Engine Land and Whitespark.
 
 ---

@@ -110,8 +110,10 @@ This is what turns an info-page into a sale. Every claim traces to the fact-shee
 ### Internal Link Plan IN (authority flowing TO this page)
 - **From**: [Hub Page URL] (current Pos 1-3 for [keyword]) → anchor: "[descriptive 2-5 word phrase, not 'click here']"
   - Location: middle of paragraph about [topic-bridge to new page]
-- **From**: [Secondary Hub URL] → anchor: "[anchor variant]"
-- **From**: [Topic-adjacent existing page] → anchor: "[anchor]"
+- **From**: [Secondary Hub URL] → anchor: "[same primary-keyword anchor, or a minimal variant]"
+- **From**: [Topic-adjacent existing page] → anchor: "[same primary-keyword anchor]"
+
+(Internal anchors: keep them close to the target's primary keyword and don't vary them for variety's sake; published tests found exact-match internal anchors beat varied ones, KB Section 28.2. This is the opposite of the caution for backlinks.)
 
 (Section 17: max 3 internal links pointing in is plenty for early-stage push; source them from topically-relevant hubs — outbound links don't cost a hub its own rank, but each one thins its authority flow, so keep hub outlinks few and on-topic)
 

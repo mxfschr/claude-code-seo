@@ -32,6 +32,8 @@ flowchart TD
 
 One operational rule across all of it: **7-day cooldown** — never touch the same page twice within a week. GSC needs time to register each change, and stacked edits make cause-and-effect unreadable.
 
+And keep a **change log** for every change a command leads you to make: page, date, baseline position (GSC, 28 days), what changed, *why*, and a revisit date ~3 months out. When something moves, the log tells you which change did it; without it you're doing random work until something sticks (Edward Sturm, KB Section 28.1).
+
 ## The five principles behind it
 
 These come from the [knowledge base](../knowledge-base/seo-knowledge-base.md) — the commands enforce them so you don't have to remember:

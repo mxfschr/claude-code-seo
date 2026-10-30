@@ -1,6 +1,6 @@
 # claude-code-seo
 
-**An executable SEO system for [Claude Code](https://claude.com/claude-code): a 26-section knowledge base distilled from the most credible practitioners — plus 9 slash commands that turn it into live audits against your real Google Search Console and DataForSEO data.**
+**An executable SEO system for [Claude Code](https://claude.com/claude-code): a 28-section knowledge base distilled from the most credible practitioners — plus 9 slash commands that turn it into live audits against your real Google Search Console and DataForSEO data.**
 
 A while ago I posted in r/SEO about following [u/WebLinkr](https://www.reddit.com/user/WebLinkr/)'s advice and watching it work on my own site. A bunch of people asked me to share my notes. This is those notes — the full markdown file — plus the part that actually does the work: the Claude Code commands my SEO runs on.
 
@@ -26,7 +26,7 @@ No dashboard, no subscription, no "content score". Claude Code + two MCP servers
 
 ```
 knowledge-base/
-└── seo-knowledge-base.md   The full methodology. 26 sections: Topical Authority,
+└── seo-knowledge-base.md   The full methodology. 28 sections: Topical Authority,
                             PageRank mechanics, the biggest SEO myths, link building,
                             LLM/AI-search visibility (Query Fan-Out), BoF strategy,
                             Thin Starter Pages, Authority Shaping, the Re-Evaluation
@@ -34,7 +34,8 @@ knowledge-base/
                             down to the T*/Q*/P* ranking architecture confirmed by
                             the May 2024 Google leak and DOJ trial testimony — plus
                             field notes from experiments on my own sites, with the
-                            actual numbers (Section 27).
+                            actual numbers (Section 27), and what published
+                            controlled tests show (Section 28).
 commands/                   9 slash commands for Claude Code:
 ├── seo-analyze.md          The front door: proven authority map + next 3-5 topics
 ├── seo-quick-wins.md       Pos 4-15 keywords one push from page one (+ country-split truth)
@@ -69,7 +70,7 @@ Then follow the loop in [docs/workflow.md](docs/workflow.md): publish into prove
 
 ## Sources & credit
 
-More people deserve credit for this than I can trace — that's the honest version. I got to essentially all of it through **[u/WebLinkr](https://www.reddit.com/user/WebLinkr/)**, who has been generous enough to share everything freely across years of r/SEO comments, posts, and links. This file would not exist without that. Through him I found the rest of the sources distilled here: **David Quaid**'s Topical Authority / Query Fan-Out frameworks, **Bill Hartzer**, **SEO Pub**, Google's own statements (Matt Cutts, official docs), sworn DOJ-trial testimony (Pandu Nayak, HJ Kim, Eric Lehman), and the May 2024 Google Content-Warehouse leak. Errors of distillation are mine. None of this is affiliated with or endorsed by them — and if you see your idea here uncredited, open an issue and I'll fix the attribution.
+More people deserve credit for this than I can trace — that's the honest version. I got to essentially all of it through **[u/WebLinkr](https://www.reddit.com/user/WebLinkr/)**, who has been generous enough to share everything freely across years of r/SEO comments, posts, and links. This file would not exist without that. Through him I found the rest of the sources distilled here: **David Quaid**'s Topical Authority / Query Fan-Out frameworks, **Edward Sturm**'s daily podcast (where much of Quaid's material and Krešimir Ćorluka's SEO meta-study surfaced), **SearchPilot**'s controlled tests, **Bill Hartzer**, **SEO Pub**, Google's own statements (Matt Cutts, official docs), sworn DOJ-trial testimony (Pandu Nayak, HJ Kim, Eric Lehman), and the May 2024 Google Content-Warehouse leak. Errors of distillation are mine. None of this is affiliated with or endorsed by them — and if you see your idea here uncredited, open an issue and I'll fix the attribution.
 
 Battle-tested on my own bootstrapped projects, including [queryglow.com](https://queryglow.com) — where this exact loop took a zero-authority domain to page-one rankings in its niche.
 
