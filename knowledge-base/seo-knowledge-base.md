@@ -1055,6 +1055,8 @@ Before publishing more, look at what you already have (David Quaid). A blog with
 - **Test one change against a control group** of similar pages, not before vs after
 - **Publish research from your own data** (links, mentions and LLM citations in one asset)
 - **One plain "[brand] does [X]" sentence, identical on every channel**
+- **Put the claim in a post's first sentence** (on LinkedIn it becomes title, slug and meta description)
+- **Back a press release with links** to the release page (it holds in AI answers for months instead of weeks)
 
 ### ❌ DON'T:
 - Keyword lists at the bottom of the page
@@ -1098,6 +1100,8 @@ Before publishing more, look at what you already have (David Quaid). A blog with
 - **Separate pages for synonyms or plurals** (Google expands them like an OR; the second page cannibalizes the first)
 - **Trusting a published case study's percentage** (publication bias + bundled before/after; look for a control group)
 - **Sitewide footer links with sensitive anchors** (they describe every page, and ad review reads them too)
+- **More than a handful of self-promotional listicles** (people who overdo them get hit; equal space, neutral wording, disclose that you ranked yourself)
+- **"Recognized as the leading X" without anyone recognizing you** (misleading advertising under EU/UWG rules, and the first better-supported page replaces you)
 
 ---
 
@@ -1598,14 +1602,26 @@ LLMs (ChatGPT, Perplexity, Gemini) scrape and index news sources and press-relea
 - **Quotes:** "According to [founder name], founder of X, ..." → LLMs love attributing
 - **Numbers:** User counts, pricing, performance metrics → concrete data LLMs can repeat
 
+### AI Repeats Self-Descriptions as Fact (Edward Sturm, 2026)
+
+For "who is the best/top [X]" queries that nobody else targets, AI Overviews repeat whatever document ranks, including what you say about yourself. Edward Sturm's examples, all from the SEO niche (the most contested one):
+- **A LinkedIn post.** One SEO posted, as a joke, that he's "the world's most renowned AI visibility expert". Within hours the AI Overview called him widely recognized as a leading expert, citing the post. Why it worked: the claim was the post's first sentence, and LinkedIn turns the first sentence into the post's title, slug and meta description. His profile, work history, posting habit and follower count backed the claim up (Section 6.13, "Profiles can rank themselves").
+- **A press release on Yahoo Finance** (distributed via GlobeNewswire, a few hundred dollars), titled "[Name] recognized as a top LLM SEO expert…". Still cited for "who is the top LLM SEO expert" months later, more confidently than at first. The author also built links to the release page. Cheap releases (~$80 on AB Newswire) hold for weeks, rarely a couple of months.
+- **An article on your own site.** David Quaid's "Who is the king of SEO?" has the question in title, H1 and slug and his name in the first H2. The AI Overview now says the title is "widely attributed" to him.
+- **Self-promotional listicles** ("best math tutors in NYC 2026", you at #1). Sturm's rules: only a handful per site (people who overdo it get hit), say openly that you ranked yourself and why, give every entry the same space, write neutrally. Hyperbole costs trust; even "very" reads as forced in sales copy.
+- **The stack:** listicle on your site + press release announcing it + social posts linking to both + links to all of them. Impact tiers for releases: strong site with links pointing at the release > strong site alone > a cheap release renewed every month or two.
+
+**Why it works, and why it's fragile:** this is Section 7 in its plainest form. The LLM retrieves the top results for the fan-out query and synthesizes them; with one document saying one thing, that's the answer. The first competitor who publishes a better-supported page for the same query takes it.
+
 ### Warning
 
 - Press releases are NOT a substitute for real PR and real backlinks
 - Works best as a complement to organic content
 - Don't overdo it: 1-2 press releases per quarter is enough
 - Content must be factual — LLMs spread your claims further, and that can backfire
+- **Unprovable superiority claims are illegal advertising in the EU.** "Recognized as the leading X" with nobody doing the recognizing, or "#1" without proof, is misleading under the Unfair Commercial Practices Directive; in Germany: "Besteht die behauptete Spitzenstellung nicht oder lässt sie sich nicht nachweisen, ist die Werbung irreführend" (§5 UWG, [IHK Frankfurt](https://www.frankfurt-main.ihk.de/recht/uebersicht-alle-rechtsthemen/wettbewerbsrecht/unlauterer-wettbewerb/irrefuehrende-werbung/alleinstellungswerbung-5196142)). Competitors can send a cease-and-desist. Claim what you can prove: "the only tool that does X" when you checked, a real award, a real number
 
-**Source:** LLM SEO research, PR distribution analyses
+**Source:** LLM SEO research, PR distribution analyses; Edward Sturm podcast (2026) for the self-description examples
 
 ---
 

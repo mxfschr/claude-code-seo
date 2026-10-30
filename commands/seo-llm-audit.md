@@ -66,7 +66,7 @@ Summary stats + two tables: "Top LLM Ambassador Pages" and "Top Fan-Out Queries"
 Below 1-paragraph recommendation:
 - If you have ambassador pages: name them, suggest expanding their intent-cluster coverage (Section 7 — define, compare, edge cases, next steps)
 - Track LLM CTR via GA4 referrer "chatgpt.com", "perplexity.ai", "claude.ai"
-- Optional: suggest 1-2 Press Releases (Section 22) to push specific brand mentions into LLM training data, with the headline rooted in the searched query and the brand at the end
+- Optional: suggest 1-2 Press Releases (Section 22) to push specific brand mentions into LLM training data, with the headline rooted in the searched query and the brand at the end. Releases on syndicated finance sites hold for months, cheap ones for weeks; a few links to the release page make it stick. Only claims the user can prove: no "leading"/"#1"/"recognized as" without a source (misleading advertising in the EU)
 - Test cited vs quoted separately when checking a page in Perplexity/ChatGPT: being linked as a source comes faster than having your content used in the answer (Section 8B)
 
 ## Cost
