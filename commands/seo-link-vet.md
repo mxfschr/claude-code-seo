@@ -20,6 +20,7 @@ WebFetch the given URL/domain. Follow redirects (vanity domains often 301 elsewh
 Call `mcp__dataforseo__dataforseo_labs_google_domain_rank_overview` (target = resolved domain).
 - Organic keyword count, position distribution, ETV (estimated traffic value).
 - **ETV under ~100/mo or zero top-10 rankings → the whole domain is barely alive; everything below it inherits that.**
+- ETV and keyword counts are tool estimates built from the tool's own keyword database, and they can be pushed by ranking for exactly those keywords (KB Section 25, "Link churn"). A seller's screenshot of DR, DA or Authority Score proves nothing; this call and Step 4 are the check.
 
 ### Step 3: What does it actually rank FOR?
 Call `mcp__dataforseo__dataforseo_labs_google_ranked_keywords` (target = domain, limit 100, ordered by search volume desc). The top 20 answer the niche question below; the full list feeds the Step 7 keyword harvest.
@@ -30,6 +31,7 @@ Call `mcp__dataforseo__dataforseo_labs_google_ranked_keywords` (target = domain,
 This is the decisive check.
 - If a specific page/section was offered, WebFetch it. If it exists already: call `ranked_keywords` on that exact URL — does THE PAGE rank or get traffic?
 - If the offered placement is a NEW page (fresh guest post, "partners" page): it starts with zero rank, zero traffic → per Section 25 its value today is zero. It can become valuable later only if that page itself starts ranking.
+  - **One exception, and it's temporary:** a new article that the site links from its homepage or a hub that ranks gets authority through that link path before it ranks itself (KB Section 25, "Traffic is the proxy"). WebFetch the homepage: is the placement linked there, and will it stay (permanent section vs. a rotating news feed)? Rotating = value lasts days to weeks, say so in the verdict.
 - **Red flags:** dedicated link sections ("partners", "friends", "sponsors", "wingmen"-style), 50-100+ outbound links across unrelated niches (roofing next to crypto next to gyms), every post written for/about a different external business.
 
 ### Step 5: Editorial smell test

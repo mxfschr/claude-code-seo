@@ -114,6 +114,7 @@
 - **Interlinking your own websites is bad** ❌ - Only if it looks like a PBN
 - **"Content is king" in isolation** ❌ - Many SEOs successfully game Google with bad content. What counts is the ECHO (links, clicks, engagement)
 - **"Semantic Musicality"** ❌ - Someone claimed bold keywords + rhymes = ranking boost 😂
+- **"Your page isn't indexed because it lacks information gain"** ❌ - Google holds a patent on an information gain score, but a patent shows what was filed, not what runs. "Crawled, not indexed" is an authority problem (Section 23). Where it plausibly matters is LLM synthesis: if nine of ten sources say the same thing, none of them stands out in the answer. David Quaid: a hypothesis to test, not a rule
 
 ---
 
@@ -333,8 +334,19 @@
 - **Durability:** partner links survive because the partner benefits from the page too. Bought links on pages nobody maintains die off; a page that earns both sides traffic is the goose that lays the golden egg.
 - **Point links at deep pages, not your homepage.** Authority is page-level (Section 1): send each external link to the page that needs it (your Pos 4-20 pages, Section 17), with your bio or profile link aimed at the matching product page.
 - **Profiles can rank themselves.** Build your target keywords into bios and profiles on platforms that rank (LinkedIn, expert platforms, podcast guest pages). That's the modern, legitimate form of parasite SEO.
+- **Amplify coverage you earned.** When a publication writes about you, send it readers. At a former employer, Quaid's team put $2,000-3,000 of Facebook ads behind each article a freelance writer published about them, until it was the outlet's most-read piece; Edward Sturm did the same with near-free X ads. The editor notices who brings an audience, and the page carrying your link now has one (Section 25). Paid social clicks aren't Google clicks: this buys the relationship and the next feature, not rankings.
 - **Join communities long before you need them.** Pay it forward first. Founders who show up in a subreddit at beta asking for testers get banned: they ask a favor from a party of strangers.
 - **It's a numbers game.** Pitch 6-12 partners, trade publications or podcasts per idea. One hits. Giving up after each miss gets you nowhere.
+
+### 14. Own the Media Instead of Renting It ("News as a Service")
+David Quaid's strategy for agencies (Edward Sturm podcast, ep. 1,212, 2026): instead of paying PR agencies and link builders to borrow other people's publications, buy or build one. A niche or local news outlet, editorially independent, run by people who know SEO.
+- **Why he calls renting broken** (his anecdotes, no data): $20,000 a month on a PR agency for one press mention in six months at a former employer; large agencies spending $30,000-40,000 a month on links; his estimate that ~80% of built links do nothing (Section 25, "Link churn").
+- **The arbitrage:** many niche and local publications have years of authority and no SEO. URLs change, internal links are missing, nobody targets keywords, the editor spends their time selling ads. An owner who knows SEO grows traffic on authority that already exists and keeps what comes with being the outlet people read: referral traffic, top-of-mind awareness, LLM citations. Links are the by-product.
+- **Who can run it:** an SEO agency (the outlet becomes part of what clients get), private equity rolling up agencies, a PR agency, or the publisher itself. Quaid's reverse play: a local publisher buys a small SEO or web agency and sells services to the advertisers it already has, instead of watching outside agencies take that margin.
+- **Separate jobs, separate domains:** for a local outlet he'd split business, community and food coverage into their own branded sites. That's the EMD-with-a-job rule (Section 5). The opposite, renting out your domain's authority to sections run for someone else's revenue, is what Google's site reputation abuse policy targets: Google removed Forbes Advisor from the index in November 2024 ([Sistrix](https://www.sistrix.com/?p=169359)). Quaid holds up Forbes as the model; that part aged badly.
+- **Where it turns into a PBN:** a PBN exists to pass authority and needs no readers (a page close to a trusted seed passes authority "like a pylon", Section 25). An owned outlet only works with readers, its own revenue and editorial independence. Once it becomes a mouthpiece for its owner's clients, readers stop trusting it; Quaid points at SEO tool companies that bought publications and turned them into marketing. His prediction from the other side: PBNs will have to "function like actual news sites" to survive.
+- **Paid stays paid.** Quaid suggests the owner's SEO keep the journalism as is but point generic keyword anchors at clients ("HVAC" → the client's page instead of the brand name) without `rel="sponsored"`, since "they're not paying for it". They are: the client pays the agency that owns the outlet. Google's link spam policy lists "exchanging goods or services for links" and "advertorials or native advertising where payment is received for articles that include links that pass ranking credit" ([spam policies](https://developers.google.com/search/docs/essentials/spam-policies)). Undisclosed commercial content is also a legal problem: advertorials need a label (FTC rules in the US; §5a(4) UWG and §22 MStV in Germany). Owned media earns readers and coverage. It doesn't launder links.
+- **Edward Sturm's objection stands:** anyone who can judge a publication well enough to buy it can judge a single placement, and the placement is cheaper. Owning only beats renting if you grow the asset and use its readers, not just its links. No prices or ROI were given. Treat it as a strategy for agencies with M&A capital, not as a link tactic. The small-business version is 6.13: help the outlets your customers already read.
 
 ---
 
@@ -799,6 +811,7 @@ Example output for a cyber security agency:
 - People get their answers from AI (AI Overviews, ChatGPT, Claude)
 - **Click-through rates for top-of-funnel content have dropped 34.5%** (Ahrefs)
 - More effort: more research, thousands of words
+- **AI Overviews absorb facts, not opinions** (David Quaid): how big Puerto Rico is gets answered in the SERP; which hotel to book still sends people to videos and first-hand accounts. He hasn't seen AI Overviews gut B2B traffic. Edward Sturm's corollary: competitors who quit SEO out of AI fear leave the field to whoever keeps targeting keywords properly
 
 ### Bottom-of-Funnel Content (RECOMMENDED)
 - Why your business is a good option for the searched query
@@ -859,6 +872,9 @@ The wave of "Google is punishing AI content" posts misreads what's happening. Wh
 - **That's why "beating" it is alchemy.** Better prompts, more variation, a different template, a layer of human editing on top: none of it changes the shape, and enforcement only gets better.
 - **Scale is fine when the pages have a reason to exist.** Amazon, eBay, Reddit, Zillow, Yelp and TripAdvisor run millions of generated pages and rank, because each page serves someone who wants it. A marketplace with 2 million listings has 2 million pages because it has 2 million things to sell (Section 20).
 - **Expect overcorrection.** Panda, Penguin and the helpful content updates all swept up legitimate sites alongside the guilty ones. Sites with lots of templated pages will get caught here too. The fix is still the same: make each page's purpose unmistakable, or have fewer pages. Not a better content generator.
+- **Hand-built doesn't exempt you.** Quaid has seen a site with ~1,000 hand-written, cookie-cutter pages hit for scaled content abuse. What protects you is that each page has its own reason and no two cannibalize, not who typed them.
+- **Grow in steps, not jumps** (Quaid's heuristic, no data): add roughly 25% of your current page count per step. A 50-page site can't add 1,000 pages; a site under 1,000 pages shouldn't grow 200-300% at once. For PAA pages he starts with 10-12 (Section 15). If a batch earns no clicks, rethink that category before adding more.
+- **"We did nothing wrong" rarely checks out.** Edward Sturm looked at a forum whose r/SEO post blamed Google for a traffic collapse. The site had scaled AI content, plus an AI bot answering users on a forum people visit to talk to humans. Look at the site before accepting the diagnosis.
 
 ### A penalty is a throttle, not a removal
 - Algorithmic enforcement usually keeps you in the index: your pages still show up in a `site:` search, they just can't rank for anything that matters. The throttle can be temporary, semi-permanent or permanent, depending on what tripped it and whether Google thinks the behavior will stop (David Quaid).
@@ -924,6 +940,7 @@ The wave of "Google is punishing AI content" posts misreads what's happening. Wh
 - DR/DA behave non-linearly
 - Lose backlinks while shipping content in a tight topical band = traffic can still rise
 - Tools interpret a traffic increase as authority gain even when the backlink graph shrinks
+- That works in both directions: ranking for keywords in a tool's own database pushes its traffic-based score up without any change Google would notice (Section 25, "Link churn")
 - **PageRank hasn't changed much in 10 years**
 
 ### Rank readings are snapshots (hyper-rotation)
@@ -931,6 +948,12 @@ The wave of "Google is punishing AI content" posts misreads what's happening. Wh
 - A single live SERP check can show you crashing or ranking when you're only rotating in or out for that hour
 - Rank trackers get noisier: Google is walling off automated SERP access (it sued the scraping API SerpApi in December 2025). Quaid's read: part of a moat against LLM companies riding Google's index
 - **Position truth = aggregated GSC data over 28+ days**, split by country (`/seo-quick-wins`). Use live SERPs to see *who* competes and *which* features show (AI Overview, video, PAA), not where you rank
+
+### Content debt before new content
+Before publishing more, look at what you already have (David Quaid). A blog with 2,000 posts where only the top three earn clicks every day doesn't need post 2,001.
+- **Prune what's dead and won't return** (his example: COVID-era news), but check first whether people still research it, students included.
+- **Fix before you rewrite:** bad UX, data locked inside images (convert it to text), pages aimed at a keyword nobody searches (retarget them).
+- **Move off-topic folders out.** A motivational-quotes folder on a software blog splits topical focus. Quaid would give it its own domain with its own job (Section 5), e.g. a quotes site "curated by" the brand that links home. His view is that HubSpot's widely reported blog traffic collapse wouldn't have happened that way. Opinion, not tested.
 
 ### Give searchers what they want
 - Give searchers what they want ABOVE THE FOLD, before they scroll
@@ -994,6 +1017,10 @@ The wave of "Google is punishing AI content" posts misreads what's happening. Wh
 - **Keep slugs to the keyword core** (`/trip-to-como/`, drop what Google infers)
 - **Start a new domain's authority work before launch** (there's no sandbox to wait out)
 - **Use Bing's AI Performance report** for grounding queries and citation share
+- **Amplify coverage you earned** (send readers to the article about you: the editor and the linking page both gain)
+- **Grow page count in ~25% steps** (Quaid's heuristic; start PAA pages with 10-12)
+- **Split traffic drops by query × page** before diagnosing (pogo-sticking hits single keywords, not whole pages)
+- **Pay down content debt before publishing more** (prune, fix, retarget, move off-topic folders to their own domain)
 
 ### ❌ DON'T:
 - Keyword lists at the bottom of the page
@@ -1032,6 +1059,8 @@ The wave of "Google is punishing AI content" posts misreads what's happening. Wh
 - **Mass-producing pages because a keyword tool showed volume** (scaled content abuse; the policy is method-agnostic, AI or human)
 - **Blaming AI for a scaled-content hit** (the fix is a reason for each page to exist, or fewer pages, not a better generator)
 - **Calling a ranking drop "de-indexed"** without checking `site:` and GSC (indexed + invisible = throttled, Section 10)
+- **Undisclosed commercial links from media you own** (the client pays you, so the link is paid: label advertorials, use `rel="sponsored"`)
+- **Tool authority scores as a link criterion** (traffic-based scores rise when a site ranks for the tool's own keyword list)
 
 ---
 
@@ -1666,6 +1695,10 @@ LLMs (ChatGPT, Perplexity, Gemini) scrape and index news sources and press-relea
 
 **Implication:** Get into the top positions first (authority + relevance), THEN optimize CTR (title tags, meta descriptions). The order is not reversible.
 
+### Diagnose Drops per Query, Not per Page
+
+David Quaid's observation from sites that lost traffic (no data shown): the cause he usually finds isn't AI Overviews but pogo-sticking (`badClicks`, Section 26.3). The weighting on click behavior changed, and it hits **specific keywords on a page**, not the whole page: one query can fall 90% while the page keeps its other rankings. A page-level traffic chart hides that. Split the drop by query × page in GSC and fix the answer for the queries that fell (Section 13, "Give searchers what they want").
+
 ### CTR and the LLM Era
 
 - Fewer clicks due to LLM answers → the CTR signal gets harder to build
@@ -1688,8 +1721,20 @@ LLMs (ChatGPT, Perplexity, Gemini) scrape and index news sources and press-relea
 ### What Actually Counts
 
 - **Does the linking page itself have traffic?** Even 1 click per week is enough
-- **Does the page rank?** If the linking page does not rank, the link is worthless
+- **Does the page rank?** If the linking page does not rank, the link is worthless, unless it sits right next to a page that does (see "Traffic is the proxy" below)
 - **Google does NOT segment websites by niche** — a plumber can link to a landscaper, an electrician to a kite shop. Google understands that.
+
+### Traffic Is the Proxy, Not the Mechanism
+
+- The mechanism is PageRank: authority flows along links, and the leak's `PageRankNS` measures distance to trusted seed sites (Section 26.3). Traffic is what you can see from outside, so it's the test: a page that holds authority ranks and gets clicked for *something*.
+- **The exception shows the mechanism.** A page with no traffic can still pass authority if it sits close to a seed. Quaid on PBN pages next to a trusted source: they pass authority "like a pylon". A fresh article linked from a strong homepage or section front gets authority the day it's published, before it ranks for anything. That lasts only while the homepage link does: news homepages rotate (Section 5, "Trending/Popular Articles").
+- **So vet in this order:** does the page rank or get traffic? Strong yes. If not, is it linked from the site's homepage or a hub that ranks, and will it stay linked? Maybe, for now. Neither: zero today (Section 27.1).
+- **You can't rank two equal links from outside.** Same article on golf.com and on healthline.com: Quaid says nobody can tell from the domain which link is worth more, and people who claim to know are guessing. What decides it is what you can partly see: the page's own traffic, and how close it sits to the homepage and to whatever links into that.
+
+### Link Churn: Most Built Links Don't Last
+
+- Open the link-history report for a competitive domain in Semrush or Ahrefs: new and lost links often run as near mirror images. Quaid's read: SEOs build ~10x the links they need because they can't see what the linking page ranks for or how long it will (his estimate). At a former employer he built fewer than 100 links in 12 years, through relationships with partners like Microsoft, and didn't need more.
+- **Tool authority scores move without Google seeing anything.** Semrush's Authority Score includes "estimated monthly average of traffic" ([Semrush KB](https://www.semrush.com/kb/747-authority-score)), and that estimate only counts keywords in Semrush's own database. Quaid's trick: put Semrush's version of a keyword in a title, Semrush credits the traffic, the score rises. Assume link sellers know this too.
 
 ### Diagnostics
 
