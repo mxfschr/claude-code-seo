@@ -166,7 +166,24 @@
 - Place keywords deliberately in: page title, URL slug, meta description, H1, start of the first sentence
 - **Work them in naturally**, not as a list at the end
 - **Slug = the keyword core, nothing else.** Drop every word Google already infers: `/trip-to-como/`, not `/how-to-enjoy-a-wonderful-day-out-at-lake-como-in-italy/` (Google knows Como is a lake in Italy). The simpler the slug, the easier Google can slot the page into an index (David Quaid). Long title tags (below) are a separate decision: titles can carry variants, slugs carry the core.
+- **Keep stop words that belong to a name.** Google drops "of", "the", "a" from queries, except inside entities: "The Lord of the Rings" keeps them (John Mueller, see below). Same for slugs: `/lord-of-the-rings-tour/`, not `/lord-rings-tour/`.
 - **One keyword = one page on your domain** (two pages on the same keyword cannibalize, Section 1). On other people's domains you can reuse it as often as you like: LinkedIn post, YouTube title, partner page, slides, press release (Section 6).
+- **Cover variants with their extra words, not repeated phrases** (Edward Sturm): one page can target 2-3 keywords. Main keyword "room planner app", plus "room planner online" and "kitchen planner app" (too small for a page of their own): work "online" and "kitchen" in high on the page, naturally. You don't write out all three phrases.
+
+### How Google Reads a Query (John Mueller, Search Central Live Barcelona, Oct 2026)
+As reported in John Campbell's writeup and presented by Edward Sturm:
+1. **Language detection.** Harder for brand terms, which often aren't a word in any language; Google uses other signals such as the user's location.
+2. **Stop words** are dropped unless they're part of an entity name (slug rule above).
+3. **Entity recognition.**
+4. **Synonym expansion**, which Mueller called a very important part of ranking. It works like an OR: "fried chicken place in Barcelona" becomes fried chicken (place OR area OR location OR restaurant) Barcelona; photo, picture, image and photograph are treated alike. Synonyms can depend on context: GM is General Motors next to "car", genetically modified next to "barley", good morning in a chat.
+5. **Siblings aren't synonyms.** Canon and Nikon play the same role but aren't interchangeable. When people search "X vs Y", Google takes that as a sign the two are different things in the same space. That's why vs pages help define what your entity is (Section 9).
+- **Typos and plurals don't matter.** Pages with misspellings rank #1 all the time.
+- **Consequences:** one page covers its synonyms and plurals, and a second page for a synonym competes with the first (Section 1). Siblings and different entities get their own pages.
+
+### Off-Site Descriptions Widen What a Page Ranks For (Query Augmentation)
+- Every link and mention describes you in someone else's words, and Google reads the anchor and the text around it (Section 3, "Anchor text"). Over years those descriptions add up to queries you never optimized for.
+- **Edward Sturm's example:** a PDF-editing SaaS running since 2012 (about $106M revenue a year, per his numbers) whose homepage ranks for ~233,000 keywords, ~15,000 of them in the top 3. Tool estimates, not GSC. Most of those terms appear nowhere on the page.
+- Consequence: the long game is the shortcut. Keep earning links and mentions, and let people describe you in their own words. His episode 1,171 with James Dooley covers it in full.
 
 ### Exact-Match Domains (EMDs): Relevance in the Domain Name
 - An EMD (`saascrm.com` for "SaaS CRM") carries the primary keyword's relevance in the domain itself. A branded domain (`hubspot.com`) has to earn that relevance with links and clicks first.
@@ -484,6 +501,8 @@ Query Fan Out is the process AI search systems use to break ONE question into MA
 
 **Caveat: this signal depends on the pipe.** It only shows up because LLM retrieval hits Google's SERPs in a way that logs impressions. Google is actively restricting automated SERP access (Section 13, "Rank readings are snapshots"). If that pipe changes, fan-out impressions in GSC can shrink while your actual LLM visibility stays the same. Cross-check with GA4 LLM referrals and Bing's AI Performance report (Section 8B) before reading a drop as a loss.
 
+**Google's own fan-outs aren't in there.** Fan-out queries from Google's AI features (AI Mode, AI Overviews) don't appear in Search Console because they don't come from users (John Mueller at Search Central Live Barcelona, per John Campbell's writeup; Search Engine Roundtable ran the same [PSA](https://www.seroundtable.com/fan-out-queries-are-not-in-google-search-console-39676.html)). Other platforms may expose theirs, e.g. the Gemini app or some APIs. The long zero-click queries you find in GSC are other LLMs' retrieval hitting Google. Your AI Mode visibility isn't in this report at all.
+
 ### Practical LLM optimization
 
 **Optimizing content for Query Fan Out:**
@@ -639,6 +658,8 @@ Content that covers the broader intent space - **definitions, comparisons, edge 
 
 **Practical consequence of Drift:**
 You may need to **publish the same articles under different keyphrases** to target the different Drift phrases. If you rank for "E-E-A-T SEO guide" but not for "EEAT SEO guide 2025", you miss the drifted traffic.
+
+**Check before you duplicate.** Fan-out queries run through the same query understanding as typed ones (John Mueller, Section 5 "How Google Reads a Query"): plurals, typos and true synonyms are already expanded. If GSC shows the same page ranking for both variants, Google treats them as one query; add the missing word to that page instead of writing a second one that cannibalizes it. A separate page only makes sense for a variant Google treats as a different query.
 
 ### LLMs are NOT search engines
 **Fundamental misconception:** Many think LLMs are trained on all web content like a cache.
@@ -836,6 +857,7 @@ Example output for a cyber security agency:
 - **SaaS version:** a Mac-only competitor + "windows", a subscription competitor + "lifetime" or "one-time", a cloud-only competitor + "self-hosted". The modifier must match something your product really does (never invent a differentiator)
 - **How to find them:** seed a keyword tool or the Google Ads keyword planner with the competitor's brand name, then filter the suggestions for modifiers like alternative, pricing, location, platform, features. `/seo-analyze` runs this as stream (d), using the differentiators from `/seo-product-facts`
 - Your competitors' success builds the road map to displace them: the more people search their brand, the more modifier gaps appear
+- **LLMs fan out into brand + "price" and brand + "reviews"** (Edward Sturm, from Perplexity's visible steps): once they have a list of brands, they search each one with those words appended. Own both for your brand: a crawlable pricing page (prices in the HTML, not only rendered by JavaScript) and a reviews page built from real customer quotes. Where a competitor hides its pricing or has no review page, an honest "[competitor] pricing" comparison can own that answer. Never invent reviews or prices: fake reviews are banned under EU consumer law and the FTC's 2024 rule, and LLMs repeat what you publish (Section 22)
 
 ---
 
@@ -996,7 +1018,9 @@ Before publishing more, look at what you already have (David Quaid). A blog with
 - **Use Reddit for ICP prompt research**
 - **Create content for follow-up questions**
 - **Copy fan-out queries into Google to verify rankings**
-- **Same article under different keyphrases for drift variants**
+- **Same article under different keyphrases for drift variants** (only for variants Google treats as different queries; synonyms and plurals are already expanded)
+- **Keep stop words that are part of a name** in slugs (`lord-of-the-rings`)
+- **Own "[brand] pricing" and "[brand] reviews"** (LLM fan-outs append both to every brand they shortlist)
 - **Use DevTools to see ChatGPT's real queries**
 - **Set up a Looker Studio dashboard for LLM traffic** (~20 min, or $20 on Fiverr)
 - **Thin starter pages for untested keywords** (200-400 words, then watch GSC)
@@ -1061,6 +1085,7 @@ Before publishing more, look at what you already have (David Quaid). A blog with
 - **Calling a ranking drop "de-indexed"** without checking `site:` and GSC (indexed + invisible = throttled, Section 10)
 - **Undisclosed commercial links from media you own** (the client pays you, so the link is paid: label advertorials, use `rel="sponsored"`)
 - **Tool authority scores as a link criterion** (traffic-based scores rise when a site ranks for the tool's own keyword list)
+- **Separate pages for synonyms or plurals** (Google expands them like an OR; the second page cannibalizes the first)
 
 ---
 

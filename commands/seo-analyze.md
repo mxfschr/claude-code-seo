@@ -60,8 +60,9 @@ Run these in parallel:
 - **Competitors:** brands that appear in your Owned/Striking-distance queries ("X vs Y", "X alternative") plus any `/vs/<competitor>` page in the website repo. Take the top 3 by impressions.
 - **Differentiators:** run the `/seo-product-facts` extraction for sections B (pricing), C (platforms) and G (per-competitor differentiators) only. Code-verified facts only, never invent one.
 - For each competitor call `mcp__dataforseo__dataforseo_labs_google_keyword_suggestions` (keyword = competitor brand, location_name="United States", language_code="en", limit=100).
-- **Keep** suggestions whose modifier matches a verified differentiator (platform: "windows", "linux", "web", "online"; model: "lifetime", "one time", "free", "open source", "self hosted"; a feature the competitor lacks) plus the generic BoF modifiers "alternative", "vs", "pricing", "cheaper". **Drop** navigational noise (login, download, support, crack, careers) and any modifier your product doesn't really cover.
+- **Keep** suggestions whose modifier matches a verified differentiator (platform: "windows", "linux", "web", "online"; model: "lifetime", "one time", "free", "open source", "self hosted"; a feature the competitor lacks) plus the generic BoF modifiers "alternative", "vs", "pricing", "price", "reviews", "cheaper" (LLM fan-outs append "price" and "reviews" to every brand they shortlist, KB Section 9). **Drop** navigational noise (login, download, support, crack, careers) and any modifier your product doesn't really cover.
 - These are BoF by definition. Run them through the same Step 5 filter: they usually land far below the ceiling.
+- **Own-brand check (no extra call):** does the site have a crawlable pricing page and a reviews/testimonials page with real customer quotes, each named after "[brand] pricing" / "[brand] reviews"? If one is missing, add it to the Step 7 flags. Never suggest inventing reviews.
 
 Merge, dedupe, drop keywords you already Own (Pos ≤ 7 — covered) and obvious off-topic noise (keywords sharing no entity/term with any authority center — this is the niche filter the lightweight commands lack).
 

@@ -11,6 +11,7 @@ Background (Sections 7, 8, 8B of the knowledge base):
 - If your page ranks Pos 1-10 for a Fan-Out query AND has 0 clicks, you're being used as Supporting Evidence — but the user clicked through the LLM answer, not through Google
 - This is INVISIBLE traffic from an SEO perspective but it's LLM citations (= brand mentions in AI)
 - David Quaid's signature: "evaluate", "compare", "vs", "alternative" queries with very long phrasing and 0 CTR
+- What this audit can't see: Google's own fan-outs (AI Mode, AI Overviews) never appear in GSC because they don't come from users (John Mueller, KB Section 7). Everything found here is third-party LLM retrieval hitting Google. Say so in the summary, so nobody reads the result as AI Mode visibility.
 
 > **This signal depends on the pipe.** It exists only because LLM retrieval hits Google's SERPs in a way that logs GSC impressions. Google is actively restricting automated SERP access (Section 13). If fan-out impressions drop between runs, do NOT report it as lost LLM visibility on GSC alone: cross-check GA4 LLM referrals and, if available, Bing's AI Performance report (Step 6) first. Say explicitly which of the three sources moved.
 
