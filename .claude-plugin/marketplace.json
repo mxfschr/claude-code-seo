@@ -1,0 +1,15 @@
+{
+  "name": "mxfschr",
+  "description": "SEO skills for Claude Code by mxfschr.",
+  "owner": {
+    "name": "mxfschr",
+    "url": "https://github.com/mxfschr"
+  },
+  "plugins": [
+    {
+      "name": "seo",
+      "source": "./",
+      "description": "Executable SEO system: 12 skills that run a 28-section knowledge base against your live Google Search Console and DataForSEO data."
+    }
+  ]
+}

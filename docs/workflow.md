@@ -1,18 +1,22 @@
 # The Workflow
 
-The commands form one loop: **map your proven authority → publish into it → maintain what ranks**. Claude Code executes each step against live GSC + DataForSEO data; you make the calls.
+The skills form one loop: **map your proven authority → publish into it → maintain what ranks**. Claude Code executes each step against live GSC + DataForSEO data; you make the calls.
 
 ```mermaid
 flowchart TD
     A["/seo-analyze<br/><i>map proven authority,<br/>pick 3-5 topics</i>"] --> B["/seo-next-content<br/><i>publish-ready briefs<br/>with link wiring</i>"]
     B -.->|"pulls live"| F["/seo-product-facts<br/><i>code-verified product truth</i>"]
     B --> C["✍️ publish"]
-    C --> D["maintain (recurring)"]
+    C --> L["/seo-log<br/><i>record the change,<br/>review after 90 days</i>"]
+    L --> D["maintain (recurring)"]
     D --> D1["/seo-quick-wins<br/><i>weekly · Pos 4-15 pushes</i>"]
     D --> D2["/seo-re-eval<br/><i>monthly · republish hack</i>"]
     D --> D3["/seo-cannibal<br/><i>monthly · page conflicts</i>"]
     D --> D4["/seo-llm-audit<br/><i>monthly · AI citations</i>"]
+    D --> D5["/seo-health<br/><i>monthly · tech + index status</i>"]
+    D --> D6["/seo-competitor-watch<br/><i>monthly · what competitors newly rank with</i>"]
     D1 --> A
+    D6 --> B
     E["/seo-cluster-expand<br/><i>new topic? scout the cluster first</i>"] --> B
 ```
 
@@ -29,14 +33,18 @@ flowchart TD
 | Monthly | `/seo-llm-audit yourdomain.com` | Queries where LLMs cite you invisibly (Pos 1-10, zero clicks) — your AI-search footprint |
 | Entering a new topic | `/seo-cluster-expand "seed keyword"` | The semantic neighborhood: what to push, what to thin-start, what to skip |
 | A link/exchange offer comes in | `/seo-link-vet <their-domain>` | Accept / counter / decline verdict: does the linking page have real traffic, does the niche fit, is it a link farm |
+| After every change you make | `/seo-log yourdomain.com <page> <action> <what> because <why>` | The change with its GSC baseline; `/seo-log review yourdomain.com` measures it 90 days later |
+| Monthly | `/seo-health yourdomain.com` | Status codes, redirecting links, canonicals, content orphans, JS-only content, index status of linked pages without impressions |
+| Monthly | `/seo-competitor-watch yourdomain.com` | Competitor pages that newly rank or grew, routed to a quick win or a new brief |
+| After a release that changes pricing or features | `/seo-product-facts drift` | Website text that still states the old fact, plus what to announce |
 
-One operational rule across all of it: **7-day cooldown** — never touch the same page twice within a week. GSC needs time to register each change, and stacked edits make cause-and-effect unreadable.
+One operational rule across all of it: **7-day cooldown** — never touch the same page twice within a week. GSC needs time to register each change, and stacked edits make cause-and-effect unreadable. The skills enforce it from `seo/<domain>/log.md`, which `/seo-log` writes.
 
-And keep a **change log** for every change a command leads you to make: page, date, baseline position (GSC, 28 days), what changed, *why*, and a revisit date ~3 months out. When something moves, the log tells you which change did it; without it you're doing random work until something sticks (Edward Sturm, KB Section 28.1).
+`/seo-log` keeps the **change log** for every change a skill leads you to make: page, date, baseline position (GSC, 28 days), what changed, *why*, and a revisit date 90 days out; `/seo-log review` fills in the result. When something moves, the log tells you which change did it; without it you're doing random work until something sticks (Edward Sturm, KB Section 28.1). A fix that failed twice on the same page is not recommended a third time.
 
 ## The five principles behind it
 
-These come from the [knowledge base](../knowledge-base/seo-knowledge-base.md) — the commands enforce them so you don't have to remember:
+These come from the [knowledge base](../knowledge-base/seo-knowledge-base.md) — the skills enforce them so you don't have to remember:
 
 1. **Authority is page-level and proven, not a domain score.** The bar for "can we rank this?" is the highest difficulty you *already* rank top-7 for (your proven ceiling) — not DR. (Sections 1, 25)
 2. **Bottom-of-funnel first.** "X vs Y", "best X for Y", "X alternative" — 400-800 words that position your product as the answer. Top-of-funnel traffic doesn't pay rent. (Section 9)
@@ -47,19 +55,18 @@ These come from the [knowledge base](../knowledge-base/seo-knowledge-base.md) �
 ## A realistic first month
 
 ```
-Day 1    Setup (docs/setup.md) → /seo-analyze yourdomain.com
+Day 1    Setup (docs/setup.md) → /seo-analyze yourdomain.com → /seo-health yourdomain.com
 Day 1-7  Publish picks #1-2 via /seo-next-content (including the internal links it wires)
 Day 7    /seo-quick-wins — execute the single highest-leverage action
 Day 14   /seo-quick-wins again · publish pick #3
 Day 21   /seo-quick-wins · /seo-cannibal (first conflict sweep)
-Day 28   /seo-re-eval + /seo-llm-audit · re-run /seo-analyze if picks are exhausted
+Day 28   /seo-re-eval + /seo-llm-audit + /seo-competitor-watch · re-run /seo-analyze if picks are exhausted
 ```
 
 Expectation management (Section 19): new pages index in 1-2 weeks, reach Pos 10-15 in 4-8 weeks *if the internal linking is executed*, and get their real NavBoost evaluation over ~13 months of click data. SEO compounds; the loop is designed to be run, not admired.
 
 ## Running this for clients?
 
-This system was built by a solo dev for his own sites — two additions make sense if you run it for clients (suggested by the community):
+State is per domain (`seo/<domain>/`), so one working folder can hold several clients. One addition still makes sense (suggested by the community):
 
-- **State tracking:** keep a small per-client log (JSON or markdown) of when each command last ran, which pages were modified, and what was already recommended — prevents re-recommending links you already placed and lets you skip commands when nothing changed.
-- **Dual reporting:** the command output is operator-speak. Translate the verdicts into plain English for the client ("we moved page X from page 2 to page 1 by adding one link from your most-visited article"), and keep the raw output as your working log.
+- **Dual reporting:** the skill output is operator-speak. Translate the verdicts into plain English for the client ("we moved page X from page 2 to page 1 by adding one link from your most-visited article"), and keep the raw output and `log.md` as your working log.

@@ -1,9 +1,12 @@
 ---
-description: Detect LLM Fan-Out queries (high impressions, near-zero clicks, Pos 1-10)
+name: seo-llm-audit
+description: "Finds LLM fan-out queries in Search Console (long compare, evaluate, alternative and vs queries at position 1 to 10 with impressions and almost no clicks) and the pages LLMs use as sources, with an optional Bing AI Performance export. Use when the user asks about visibility in ChatGPT, Perplexity or other AI answers, AI citations, or GEO."
 argument-hint: "<domain or sc-domain:domain>"
 ---
 
 You are running an LLM Fan-Out Visibility audit for: **$ARGUMENTS**
+
+If the target above is empty or still shows an unfilled argument placeholder, ask the user for the domain (or GSC property) and wait for the answer.
 
 Background (Sections 7, 8, 8B of the knowledge base):
 - LLMs (ChatGPT, Perplexity, Claude) decompose user prompts into 3-5+ sub-queries

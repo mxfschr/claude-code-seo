@@ -1,9 +1,12 @@
 ---
-description: Authority-first "new analysis" — derives your proven ranking ceiling from GSC, then recommends 3-5 next topics that expand from authority you ALREADY have (no DR gate)
+name: seo-analyze
+description: "Authority-first SEO analysis for a domain. Derives the proven ranking ceiling from Google Search Console (the highest keyword difficulty the site already ranks top 7 for), clusters the authority it already has and recommends the next 3 to 5 topics with title, slug and internal link plan. Use when the user asks what to write or publish next, where to start with SEO, for an SEO analysis of their site, or which keywords they can realistically rank for."
 argument-hint: "<domain or sc-domain:domain>"
 ---
 
 You are running an **Authority-First Content Analysis** for: **$ARGUMENTS**
+
+If the target above is empty or still shows an unfilled argument placeholder, ask the user for the domain (or GSC property) and wait for the answer.
 
 This is the orchestrating front door for the whole `/seo-*` suite: it maps your proven authority and routes you to the right deep-dive command.
 
@@ -18,6 +21,30 @@ So this command **does not gate on DR**. It measures what you've *already proven
 Methodology anchors (knowledge base): Section 1 (topical authority + bridges), Sections 5+17 (internal-link authority flow), Section 7 (Beachhead — GSC reveals the real keyword universe), Section 9 (BoF > ToF, 400-800w — **every pick is a conversion play: the page positions the product as the answer, fact-checked against a LIVE pull of the product's code (`/seo-product-facts`), never invented**), Section 18 (Thin Starter), Section 19 (Re-Evaluation / NavBoost 13mo), Section 24 (CTR as authority signal).
 
 **Product-first framing:** if this site sells a product, every page is a conversion play, not an info blog. When recommending picks, note for each how the product wins the query (BoF angle) — but the actual product claims get grounded later in the brief by a LIVE `/seo-product-facts` pull of the app + website code (auto-detected siblings, never cached). Do not invent capabilities here either.
+
+<!-- state-protocol:start -->
+## State: seo/{domain}/
+
+This skill keeps state in `seo/{domain}/` inside the current working directory. `{domain}` is the domain argument lowercased, with `sc-domain:`, `https://`, `http://`, a leading `www.` and any trailing `/` removed (`sc-domain:Example.com` becomes `example.com`). Two files live there, both markdown tables:
+
+- `log.md`, written only by `/seo-log`. Header: `| Date | Page | Query | Action | Change | Why | Baseline | Revisit | Result | Outcome |`
+- `backlog.md`, written by every skill that recommends work. Header: `| ID | Added | Skill | Page | Query | Action | Note | Status |`
+
+Action is one of: `title`, `content`, `internal-link`, `republish`, `merge`, `new-page`, `tech-fix`, `evaluate`. Status is one of: `open`, `done`, `dropped`. Outcome is one of: `pending`, `gain`, `no-gain`, `loss`. Dates are YYYY-MM-DD.
+
+**Before the first step:**
+1. Read `seo/{domain}/log.md` and `seo/{domain}/backlog.md` if they exist. A missing folder or file is not an error: continue without it.
+2. **Cooldown (7 days).** A page with a `log.md` row dated within the last 7 days is cooling down. Recommend no action on it and use it as no link source this run; list it under "Cooling down" with the date it is free again (row date + 7 days).
+3. **Tried twice, stop.** When `log.md` has 2 or more rows for the same Page and Action with Outcome `no-gain` or `loss`, do not recommend that Action for that Page again. List it under "Stopped: tried twice without gain" with both dates.
+4. **Revisits due.** Count the `log.md` rows with Outcome `pending` and a Revisit date on or before today.
+
+**After the output:**
+5. Append each recommendation of this run to `backlog.md` as one row: ID = `B` plus the next number (highest existing ID + 1, first row `B1`), Added = today, Skill = this skill's name, Page = full URL (`new` for a page that does not exist yet), Query = target query or `-`, Action from the list for this skill below, Note = at most 100 characters, Status = `open`. Replace any `|` inside a value with `/`. Skip a recommendation when an `open` row with the same Page (for `new`: the same Query) and the same Action already exists, and write "already in backlog as B7" (that row's ID) next to it in the output.
+6. If `seo/{domain}/` does not exist yet, create it and `backlog.md` with the header row and the separator row `|---|---|---|---|---|---|---|---|`. When this run created the folder and the working directory is a git repository where `git check-ignore -q seo/` exits non-zero, add this line to the output: "Note: seo/ holds Search Console numbers. If this repository is public, add seo/ to .gitignore."
+7. End the output with these lines: if the count from rule 4 is above 0, "N change(s) are due for review: run `/seo-log review {domain}`." Then always: "State: " followed by the absolute path of `seo/{domain}/`.
+<!-- state-protocol:end -->
+
+**State in this skill:** Backlog actions: a pick that is a new page → `new-page` (Page `new`, Query = the keyword); a Quick-Win Push on an existing page → `evaluate` (Page = that page; the detail comes from `/seo-quick-wins`). Re-Evaluation flags and pSEO notes get no row. Cooldown (rule 2) applies to the page of a Quick-Win Push and to every Link IN source page in the plans.
 
 ## Execute in order
 
