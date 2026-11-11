@@ -1,8 +1,8 @@
 # claude-code-seo
 
-**An executable SEO system for [Claude Code](https://claude.com/claude-code): a 28-section knowledge base distilled from the most credible practitioners — plus 9 slash commands that turn it into live audits against your real Google Search Console and DataForSEO data.**
+**An executable SEO system for [Claude Code](https://claude.com/claude-code): a 28-section knowledge base distilled from the most credible practitioners — plus 12 skills that turn it into live audits against your real Google Search Console and DataForSEO data.**
 
-A while ago I posted in r/SEO about following [u/WebLinkr](https://www.reddit.com/user/WebLinkr/)'s advice and watching it work on my own site. A bunch of people asked me to share my notes. This is those notes — the full markdown file — plus the part that actually does the work: the Claude Code commands my SEO runs on.
+A while ago I posted in r/SEO about following [u/WebLinkr](https://www.reddit.com/user/WebLinkr/)'s advice and watching it work on my own site. A bunch of people asked me to share my notes. This is those notes — the full markdown file — plus the part that actually does the work: the Claude Code skills my SEO runs on.
 
 ## ⚠️ Work in progress — read this first
 
@@ -36,28 +36,46 @@ knowledge-base/
                             field notes from experiments on my own sites, with the
                             actual numbers (Section 27), and what published
                             controlled tests show (Section 28).
-commands/                   9 slash commands for Claude Code:
-├── seo-analyze.md          The front door: proven authority map + next 3-5 topics
-├── seo-quick-wins.md       Pos 4-15 keywords one push from page one (+ country-split truth)
-├── seo-next-content.md     Publish-ready briefs: slug, title, outline, link wiring in+out
-├── seo-product-facts.md    Live code-extraction of product facts so briefs never invent features
-├── seo-cluster-expand.md   Semantic neighborhood scouting around a seed keyword
-├── seo-re-eval.md          Old pages worth republishing (NavBoost 13-month window)
-├── seo-cannibal.md         Pages competing against each other, with merge/differentiate calls
-├── seo-llm-audit.md        Where LLMs cite you invisibly (Pos 1-10, zero clicks)
-└── seo-link-vet.md         Vet a backlink/exchange offer: real traffic, niche fit, or link farm?
+skills/                     12 skills for Claude Code (Agent Skills format):
+├── seo-analyze/            The front door: proven authority map + next 3-5 topics
+├── seo-quick-wins/         Pos 4-15 keywords one push from page one (+ country-split truth, topic gap matrix)
+├── seo-next-content/       Publish-ready briefs: slug, title, outline, unique angle, link wiring in+out
+├── seo-product-facts/      Live code-extraction of product facts; drift mode finds pages stating old facts
+├── seo-cluster-expand/     Semantic neighborhood scouting around a seed keyword
+├── seo-re-eval/            Old pages worth republishing (NavBoost 13-month window)
+├── seo-cannibal/           Pages competing against each other, with merge/differentiate calls
+├── seo-llm-audit/          Where LLMs cite you invisibly (Pos 1-10, zero clicks)
+├── seo-link-vet/           Vet a backlink/exchange offer: real traffic, niche fit, or link farm?
+├── seo-health/             Technical health + index status: status codes, canonicals, orphans, JS-only content
+├── seo-competitor-watch/   Which competitor pages newly rank, compared month over month
+└── seo-log/                Change log with GSC baseline, 90-day revisit, gain / no-gain / loss
+.claude-plugin/             Plugin + marketplace manifest (install with /plugin)
 docs/
 ├── setup.md                MCP setup (GSC free, DataForSEO pay-per-call) — 15 minutes
-└── workflow.md             How the commands chain into one loop, with cadence
+└── workflow.md             How the skills chain into one loop, with cadence
 ```
 
 ## Quickstart
 
-1. **Install the commands** — copy `commands/*.md` to `~/.claude/commands/`
-2. **Connect the data** — two MCP servers, see [docs/setup.md](docs/setup.md) (GSC is free; DataForSEO is prepaid pay-per-call, each command run costs $0-0.24 — no subscription, and **no** Backlinks API needed)
-3. **Run it** — `/seo-analyze yourdomain.com`
+1. **Install the plugin.** In Claude Code:
+   ```
+   /plugin marketplace add mxfschr/claude-code-seo
+   /plugin install seo@mxfschr
+   ```
+   Updates: `/plugin marketplace update mxfschr`, or turn on auto-update for the marketplace in `/plugin`. Without the plugin system, copy the folders in `skills/` to `~/.claude/skills/`. Coming from the old slash commands? Delete `~/.claude/commands/seo-*.md` first, otherwise `/seo-analyze` keeps running the old copy (the plugin version stays reachable as `/seo:seo-analyze`).
+2. **Connect the data.** Two MCP servers, see [docs/setup.md](docs/setup.md). GSC is free; DataForSEO is prepaid pay-per-call, most runs cost $0 to $0.25, no subscription and **no** Backlinks API needed.
+3. **Run it:** `/seo-analyze yourdomain.com`
 
 Then follow the loop in [docs/workflow.md](docs/workflow.md): publish into proven authority, push what's almost there, republish what got stuck.
+
+## State that survives between runs
+
+The skills remember. Each one keeps two markdown tables in `seo/<domain>/`, inside the folder you run Claude Code from:
+
+- `backlog.md`: every recommendation, so the next run says "already in backlog as B7" instead of repeating itself.
+- `log.md`: every change you made, written by `/seo-log` with its Search Console baseline. Ninety days later `/seo-log review` measures the result. The other skills read it to hold a page for 7 days after a change and to stop recommending a fix that failed twice on the same page.
+
+Run the skills from your website's repo and the state is versioned with the site. It contains Search Console numbers: if that repo is public, add `seo/` to `.gitignore`.
 
 ## The ideas that carry the system
 
@@ -76,11 +94,11 @@ Battle-tested on my own bootstrapped projects, including [queryglow.com](https:/
 
 ## FAQ
 
-**Do I need Claude Code specifically?** The commands are written for it (slash commands + MCP). The knowledge base is plain markdown — useful with any agent or none.
+**Do I need Claude Code specifically?** The skills are written for it (plugin + MCP) and follow Anthropic's Agent Skills format, so other agents that read SKILL.md files can load them; the MCP tool names have to match. The knowledge base is plain markdown — useful with any agent or none.
 
-**What does it cost to run?** GSC API: free. DataForSEO: prepaid credit, $0.02-0.24 per command run (each command lists its cost). A month of weekly audits costs less than a coffee.
+**What does it cost to run?** GSC API: free. DataForSEO: prepaid credit, $0.02-0.25 per run for most skills (each skill lists its cost); `/seo-health` adds On-Page calls, billed per page. A month of weekly audits costs less than a coffee.
 
-**Is this "AI SEO slop"?** The opposite. The commands force honesty: country-split truth before celebrating rankings, "0 quick wins exist" when none do, and product claims only from code. The methodology section on AI slop is one of the longer ones.
+**Is this "AI SEO slop"?** The opposite. The skills force honesty: country-split truth before celebrating rankings, "0 quick wins exist" when none do, and product claims only from code. The methodology section on AI slop is one of the longer ones.
 
 **Can I use this for my company's sites / my freelance work?** Yes — use it to do SEO for any site you work on. The license (CC BY-NC-SA 4.0) draws the line at *selling the material itself*: no repackaging it into a paid product, course, ebook, or service, no building a business on distributing it. Share improvements under the same license.
 

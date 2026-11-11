@@ -1,9 +1,12 @@
 ---
-description: Recommend the next 3-5 content pieces to publish with full publish plan (slug, title, outline, internal link plan in+out)
+name: seo-next-content
+description: "Writes publish-ready content briefs for a domain: slug, title, H1, outline, unique angle, PAA satellite pages, fact-checked product positioning and the internal link plan in and out, built from Search Console, DataForSEO and the live SERP. Use when the user wants a content brief, an outline for a new page, the next article to write, or says brief 2 after /seo-analyze."
 argument-hint: "<domain or sc-domain:domain>"
 ---
 
 You are running a Content-Action audit for: **$ARGUMENTS**
+
+If the target above is empty or still shows an unfilled argument placeholder, ask the user for the domain (or GSC property) and wait for the answer.
 
 This is the prescriptive sister to /seo-cluster-expand. The goal: produce a publish-ready plan. NOT diagnostic advice — concrete pieces with link wiring.
 
@@ -15,6 +18,30 @@ Methodology (knowledge base sections):
 - Section 19: NavBoost 13mo-window — new pages get evaluated with current site authority.
 - Section 20: pSEO templates if there's a data-source (locations, comparisons, alternatives). Every page needs its own reason to exist beyond search volume, otherwise it's scaled content abuse (Section 10). Roll out in batches of ~25% of the site's current page count (Section 10, "Grow in steps").
 - Section 26.3: siteRadius — don't write off-topic pages, they reduce site cohesion.
+
+<!-- state-protocol:start -->
+## State: seo/{domain}/
+
+This skill keeps state in `seo/{domain}/` inside the current working directory. `{domain}` is the domain argument lowercased, with `sc-domain:`, `https://`, `http://`, a leading `www.` and any trailing `/` removed (`sc-domain:Example.com` becomes `example.com`). Two files live there, both markdown tables:
+
+- `log.md`, written only by `/seo-log`. Header: `| Date | Page | Query | Action | Change | Why | Baseline | Revisit | Result | Outcome |`
+- `backlog.md`, written by every skill that recommends work. Header: `| ID | Added | Skill | Page | Query | Action | Note | Status |`
+
+Action is one of: `title`, `content`, `internal-link`, `republish`, `merge`, `new-page`, `tech-fix`, `evaluate`. Status is one of: `open`, `done`, `dropped`. Outcome is one of: `pending`, `gain`, `no-gain`, `loss`. Dates are YYYY-MM-DD.
+
+**Before the first step:**
+1. Read `seo/{domain}/log.md` and `seo/{domain}/backlog.md` if they exist. A missing folder or file is not an error: continue without it.
+2. **Cooldown (7 days).** A page with a `log.md` row dated within the last 7 days is cooling down. Recommend no action on it and use it as no link source this run; list it under "Cooling down" with the date it is free again (row date + 7 days).
+3. **Tried twice, stop.** When `log.md` has 2 or more rows for the same Page and Action with Outcome `no-gain` or `loss`, do not recommend that Action for that Page again. List it under "Stopped: tried twice without gain" with both dates.
+4. **Revisits due.** Count the `log.md` rows with Outcome `pending` and a Revisit date on or before today.
+
+**After the output:**
+5. Append each recommendation of this run to `backlog.md` as one row: ID = `B` plus the next number (highest existing ID + 1, first row `B1`), Added = today, Skill = this skill's name, Page = full URL (`new` for a page that does not exist yet), Query = target query or `-`, Action from the list for this skill below, Note = at most 100 characters, Status = `open`. Replace any `|` inside a value with `/`. Skip a recommendation when an `open` row with the same Page (for `new`: the same Query) and the same Action already exists, and write "already in backlog as B7" (that row's ID) next to it in the output.
+6. If `seo/{domain}/` does not exist yet, create it and `backlog.md` with the header row and the separator row `|---|---|---|---|---|---|---|---|`. When this run created the folder and the working directory is a git repository where `git check-ignore -q seo/` exits non-zero, add this line to the output: "Note: seo/ holds Search Console numbers. If this repository is public, add seo/ to .gitignore."
+7. End the output with these lines: if the count from rule 4 is above 0, "N change(s) are due for review: run `/seo-log review {domain}`." Then always: "State: " followed by the absolute path of `seo/{domain}/`.
+<!-- state-protocol:end -->
+
+**State in this skill:** Backlog actions: each brief → `new-page` (Page `new`, Query = the keyword); each row of the Cross-Cutting Internal Link Audit → `internal-link` (Page = the source URL that gets the link, Query = the anchor text). Cooldown (rule 2) applies to every Link IN source page: pick the next hub when one is cooling down.
 
 ## Execute in order
 
@@ -37,6 +64,8 @@ This identifies **Authority Hubs** — pages with most clicks. These are the can
 Tag the top-5 pages as "primary hubs" — they will be the senders.
 
 **Click-gate (hard rule):** a hub must have actual CLICKS — not just impressions or position. A page at Pos 4 with zero clicks in 28 days has no authority to donate. And **new pages need ~28 days of GSC data before they qualify as senders**: publish → wait → only pages with confirmed clicks become link sources. Never wire links FROM unproven pages.
+
+**Cooldown:** a hub with a `log.md` row from the last 7 days is no link source this run (State, rule 2); take the next hub.
 
 ### Step 2: Identify almost-there pages (link RECIPIENTS)
 Call `mcp__gsc__advanced_search_analytics`:
@@ -71,6 +100,11 @@ Check the SERP composition:
 - If AI Overview dominates + Reddit/Wiki in top 3 → very hard, deprioritize or use as MoF only
 - If clear gap (no good result in top 5) → priority candidate
 
+### Step 6b: Unique-angle gate
+For each candidate that survived Step 6, take the top 3 organic results from its Step 6 SERP call (skip the domain itself, reddit.com, quora.com, youtube.com and wikipedia.org, and take the next organic result instead) and call `mcp__dataforseo__on_page_content_parsing` (enable_javascript false) on each. Then write one sentence: what this page will have that none of the three has. It must come from the Step 0 fact sheet (a real price, an honest limitation, a [Product] comparison column with real specs) or from data only this site has. A longer text, more sections or a fresher date do not count (KB Section 16).
+
+If you cannot write that sentence truthfully, drop the candidate and list it under "Dropped: no unique angle" with the three URLs. Every page needs its own reason to exist (KB Section 10).
+
 ### Step 7: Build publish plan
 
 For each of the final 3-5 recommendations, output a complete brief:
@@ -89,6 +123,7 @@ For each of the final 3-5 recommendations, output a complete brief:
 - **Word count target**: 400-800 (Section 9 BoF range) or 200-400 (Section 18 Thin Starter)
 - **Document type**: blog post / comparison / landing page / alternative roundup
 - **First paragraph**: Direct answer to query (Featured Snippet bait per Section 16)
+- **Unique angle**: [the Step 6b sentence]
 
 ### Outline (H2 structure)
 1. [Direct answer / definition]
@@ -106,6 +141,7 @@ This is what turns an info-page into a sale. Every claim traces to the fact-shee
 - **"Why [Product] for [this query/audience]"**: map the searcher's pain (use the fact-sheet's quoted pain points) to 2-3 REAL features that solve it. Documented capabilities only.
 - **Honesty converts (Section 22 + the fact-sheet's own rule):** state the real limitation where relevant ("[competitor] supports more platforms; [Product] covers the 6 most common = 95% of use cases"). Honest framing builds trust and avoids false claims propagating through LLMs.
 - **CTA:** the actual offer with the real number (e.g. "$X once · self-hosted · MIT license") and a real link. Not "learn more".
+- **Competitor claims:** every statement about a competitor carries its source and date in the brief, as (source: <url or repo/path:line>, as of YYYY-MM-DD), taken from the fact sheet's competitor section. No source, no claim. Where the competitor is better, say so; that sentence is part of the honesty rule.
 
 ### Internal Link Plan IN (authority flowing TO this page)
 - **From**: [Hub Page URL] (current Pos 1-3 for [keyword]) → anchor: "[descriptive 2-5 word phrase, not 'click here']"
@@ -164,7 +200,7 @@ Existing pages that should be updated to add the new internal links once new con
 ```
 
 ## Cost
-~$0.15 per audit (heavier DataForSEO usage: 2 cluster expansions + 5-10 SERP live + intent + KD batch).
+~$0.15 per audit (heavier DataForSEO usage: 2 cluster expansions + 5-10 SERP live + intent + KD batch), plus up to 15 On-Page content parsing calls (billed per page) for the unique-angle gate.
 
 ## Operating rules
 - BE CONCRETE. No "consider exploring this topic". Always: "write THIS page with THIS title".

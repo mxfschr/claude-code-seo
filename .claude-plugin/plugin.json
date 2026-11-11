@@ -1,0 +1,12 @@
+{
+  "name": "seo",
+  "description": "Executable SEO system: 12 skills that run a 28-section knowledge base against your live Google Search Console and DataForSEO data.",
+  "author": {
+    "name": "mxfschr",
+    "url": "https://github.com/mxfschr"
+  },
+  "homepage": "https://github.com/mxfschr/claude-code-seo",
+  "repository": "https://github.com/mxfschr/claude-code-seo",
+  "license": "CC-BY-NC-SA-4.0",
+  "keywords": ["seo", "google-search-console", "dataforseo", "topical-authority", "internal-links", "llm-visibility"]
+}
