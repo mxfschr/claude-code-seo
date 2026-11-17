@@ -64,7 +64,7 @@ The skills call tools named `mcp__dataforseo__*`, so the server **must be regist
 ```jsonc
 "dataforseo": {
   "command": "npx",
-  "args": ["dataforseo-mcp-server"],
+  "args": ["-y", "dataforseo-mcp-server@2.9.13"],
   "env": {
     "DATAFORSEO_USERNAME": "your-account-email",
     "DATAFORSEO_PASSWORD": "your-api-password"
@@ -72,12 +72,24 @@ The skills call tools named `mcp__dataforseo__*`, so the server **must be regist
 }
 ```
 
+**Pin version 2.9.13.** Version 3 of `dataforseo-mcp-server` replaced the named tools the skills call (`dataforseo_labs_*`, `on_page_*`) with four generic ones, so the skills break on it. On Windows, if `npx` is not found, use `"command": "cmd"` with `"args": ["/c", "npx", "-y", "dataforseo-mcp-server@2.9.13"]`.
+
 Sign up at [dataforseo.com](https://dataforseo.com/) — it's prepaid credit, **no subscription needed**. The skills only use:
 - **DataForSEO Labs** (keyword difficulty, related keywords, keyword ideas, keyword suggestions, ranked keywords, search intent, domain rank)
-- **SERP API** (live Google results for validation)
+- **SERP API** (live Google results for validation, fetched by `scripts/serp.mjs`, see below)
 - **On-Page API** (`/seo-health`, `/seo-link-vet`, the topic gap matrix in `/seo-quick-wins` and `/seo-re-eval`, the unique-angle gate in `/seo-next-content`; billed per page)
 
 Real-world cost per skill run: **$0-0.25** (each skill lists its cost at the bottom; GSC calls are always free). You do **NOT** need the Backlinks API subscription (~$100+/mo) — nothing here uses it.
+
+### Live SERPs come from `scripts/serp.mjs`
+
+Since late September 2026 Google has been serving altered ("poisoned") result pages to many automated clients, and DataForSEO's Live SERPs are hit hard: in a test of 20 keywords on 2026-11-17, DataForSEO's own check flagged 16 as poisoned. The skills therefore fetch live Google SERPs with `scripts/serp.mjs` instead of the MCP tool `serp_organic_live_advanced`. The script asks DataForSEO to repair poisoned SERPs (`resolve_poisoned_results`), which adds the price of one SERP page: about $0.004 instead of $0.002 per 10 results. Where a skill needs the real page URLs (topic gap matrix, unique-angle gate), it also resolves Google's redirect links (`resolve_goto_urls`), which adds about a minute per call.
+
+- It needs Node.js 18 or newer on the PATH.
+- It reads `DATAFORSEO_LOGIN` (or `DATAFORSEO_USERNAME`) and `DATAFORSEO_PASSWORD` from the environment. If they are not set, it takes them from the `dataforseo` server entry in `.mcp.json` in the current folder, then in `~/.claude.json`, then in the Claude Desktop config. It never prints them.
+- Claude Code asks for permission the first time a skill runs it.
+
+SERP-based advice these skills gave before `scripts/serp.mjs` existed rests on unrepaired SERPs. Re-run the skill before acting on it.
 
 **Optional, no setup:** Bing Webmaster Tools' **AI Performance** report (grounding queries + citation share for Copilot/Bing AI). There's no MCP for it here; `/seo-llm-audit` asks for a spreadsheet export and folds it in when you have one.
 

@@ -50,6 +50,7 @@ skills/                     12 skills for Claude Code (Agent Skills format):
 ├── seo-competitor-watch/   Which competitor pages newly rank, compared month over month
 └── seo-log/                Change log with GSC baseline, 90-day revisit, gain / no-gain / loss
 .claude-plugin/             Plugin + marketplace manifest (install with /plugin)
+scripts/serp.mjs            Live Google SERPs via DataForSEO, with poisoned-SERP repair
 docs/
 ├── setup.md                MCP setup (GSC free, DataForSEO pay-per-call) — 15 minutes
 └── workflow.md             How the skills chain into one loop, with cadence

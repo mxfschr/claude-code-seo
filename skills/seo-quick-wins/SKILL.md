@@ -64,11 +64,9 @@ Call `mcp__dataforseo__dataforseo_labs_bulk_keyword_difficulty` with the top-5 k
 - KD > 50 = skip for now
 
 ### Step 4: SERP validation for top-1 candidate
-Call `mcp__dataforseo__serp_organic_live_advanced` for the highest-priority keyword:
-- search_engine: "google"
-- location_name: "United States" (or your primary market)
-- language_code: "en"
-- depth: 20
+Run this for the highest-priority keyword with the Bash tool and a timeout of 300000 ms (it takes about a minute because it resolves Google's redirect links):
+`node "${CLAUDE_SKILL_DIR}/../../scripts/serp.mjs" --keyword "<keyword>" --location "United States" --language en --depth 20 --resolve-urls`
+Use your primary market instead of "United States" if it is another country. Put the keyword in double quotes and a backslash before any `"`, `$` or backtick inside it. The output is JSON: `organic` (rank, domain, url, title, breadcrumb, website_name), `serp_features`, `people_also_ask`, and `repaired` (true when DataForSEO found a poisoned Google SERP and replaced it with Google's Web results). If the command exits non-zero, write `SERP check failed: <first line of its error output>` and skip the composition analysis and the topic gap matrix for this keyword.
 
 Analyze the **composition**: Is there an AI Overview? Are competitors Reddit/Wikipedia/authority-sites? Which SERP features show (video, PAA)?
 
@@ -91,7 +89,7 @@ For each keyword whose action is Content depth expansion (at most 2 per run, hig
 
 <!-- topic-gap-matrix:start -->
 #### Topic gap matrix (no word counts)
-1. Take the top 5 organic results for the keyword from this run's `mcp__dataforseo__serp_organic_live_advanced` call for it. If this run has none for the keyword, call it once (search_engine "google", location_name "United States" or the primary market, language_code "en", depth 10). Skip results from the domain itself and from reddit.com, quora.com, youtube.com and wikipedia.org, and take the next organic result instead.
+1. Take the top 5 organic results for the keyword from this run's `serp.mjs` output for it if that call used `--resolve-urls`. Otherwise run `node "${CLAUDE_SKILL_DIR}/../../scripts/serp.mjs" --keyword "<keyword>" --location "United States" --language en --depth 10 --resolve-urls` once, with the Bash tool and a timeout of 300000 ms (use the primary market instead of "United States" if it is another country; double quotes around the keyword, a backslash before any `"`, `$` or backtick inside it). Skip results whose `url` is null (an unresolved Google redirect), results from the domain itself and results whose `domain` is or ends in reddit.com, quora.com, youtube.com or wikipedia.org, and take the next organic result instead. If the command exits non-zero, write `SERP check failed: <first line of its error output>` in place of the matrix and skip steps 2 to 6.
 2. Call `mcp__dataforseo__on_page_content_parsing` (enable_javascript false) on each of the 5 URLs and on our ranking page. A call that errors marks that URL "not readable"; continue with the others and name it under the matrix.
 3. For each page, turn its H2 and H3 headings (the `##` and `###` lines of the parsed markdown) into short topic labels, one label per distinct question the section answers. Merge labels that mean the same across pages.
 4. Build one table: a row per topic, a column per result plus `Us`, ✓ where the page covers the topic, and a Priority column. **High**: 4 or 5 of the 5 cover it and we don't. **Medium**: 2 or 3 cover it and we don't. **Low**: 1 covers it and we don't. **Only us**: we cover it and none of them does; keep it, it is our angle.

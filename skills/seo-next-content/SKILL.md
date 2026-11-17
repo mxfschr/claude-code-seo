@@ -92,7 +92,7 @@ For top-20 candidates per cluster (highest volume + best intent match):
 - Cross-check against Step 2 output: are we ALREADY ranking for variations? If yes, the candidate is a target for the EXISTING page (route to /seo-quick-wins), not a new page.
 
 ### Step 6: SERP-type validation for surviving candidates
-For each surviving candidate (top 5-10), call `mcp__dataforseo__serp_organic_live_advanced` (depth=10, primary market).
+For each surviving candidate (top 5-10), run `node "${CLAUDE_SKILL_DIR}/../../scripts/serp.mjs" --keyword "<keyword>" --location "<primary market>" --language <language code of that market> --depth 10 --resolve-urls` with the Bash tool and a timeout of 300000 ms (double quotes around the keyword, a backslash before any `"`, `$` or backtick inside it). Each call takes about a minute because it resolves Google's redirect links, so run up to 5 of them in parallel. It prints JSON with the `organic` results (rank, domain, url, title, breadcrumb, website_name), `serp_features`, `people_also_ask`, and `repaired` (true when DataForSEO found a poisoned Google SERP and replaced it with Google's Web results). If a call exits non-zero, write `SERP check failed: <first line of its error output>` for that candidate, list it under "Not validated: SERP check failed" and leave it out of Step 6b and Step 7.
 
 Check the SERP composition:
 - If 6+ results are blog/comparison/listicle → write a blog post or comparison
@@ -101,7 +101,7 @@ Check the SERP composition:
 - If clear gap (no good result in top 5) → priority candidate
 
 ### Step 6b: Unique-angle gate
-For each candidate that survived Step 6, take the top 3 organic results from its Step 6 SERP call (skip the domain itself, reddit.com, quora.com, youtube.com and wikipedia.org, and take the next organic result instead) and call `mcp__dataforseo__on_page_content_parsing` (enable_javascript false) on each. Then write one sentence: what this page will have that none of the three has. It must come from the Step 0 fact sheet (a real price, an honest limitation, a [Product] comparison column with real specs) or from data only this site has. A longer text, more sections or a fresher date do not count (KB Section 16).
+For each candidate that survived Step 6, take the top 3 organic results from its Step 6 `serp.mjs` output (skip results whose `url` is null, the domain itself and results whose `domain` is or ends in reddit.com, quora.com, youtube.com or wikipedia.org, and take the next organic result instead) and call `mcp__dataforseo__on_page_content_parsing` (enable_javascript false) on each. Then write one sentence: what this page will have that none of the three has. It must come from the Step 0 fact sheet (a real price, an honest limitation, a [Product] comparison column with real specs) or from data only this site has. A longer text, more sections or a fresher date do not count (KB Section 16).
 
 If you cannot write that sentence truthfully, drop the candidate and list it under "Dropped: no unique angle" with the three URLs. Every page needs its own reason to exist (KB Section 10).
 
